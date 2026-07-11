@@ -1,25 +1,35 @@
 {
   "site": {
     "title": "Travel Planning",
-    "tagline": "Itineraries, built to party and to browse."
+    "wordmark": "The Itinerary",
+    "eyebrow": "Private Itineraries",
+    "tagline": "Considered journeys, composed with care — where to wander, where to dine, and where the night goes.",
+    "hero": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Prague_Panorama_-_Oct_2010.jpg/1920px-Prague_Panorama_-_Oct_2010.jpg"
   },
   "trips": [
     {
       "id": "2026-08-prague-budapest",
-      "title": "Prague + Budapest",
-      "subtitle": "Lads Trip",
-      "emoji": "🍺",
+      "title": "Prague & Budapest",
+      "subtitle": "A Bohemian–Danubian Escape",
+      "location": "Central Europe",
+      "emoji": "",
       "flags": "🇨🇿 🇭🇺",
-      "dates": "27–31 Aug 2026",
+      "dates": "27–31 August 2026",
       "nights": 4,
       "travelers": 8,
       "budget": "Mid-range",
-      "status": "Planning",
-      "gradient": ["#7c5cff", "#ff5c8a"],
+      "status": "In Planning",
+      "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Danube_and_Hungarian_Parliament_Building_by_night.jpg/1920px-Danube_and_Hungarian_Parliament_Building_by_night.jpg",
+      "hero": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Prague_-_view_from_Charles_Bridge_%28by_Pudelek%29.jpg/1920px-Prague_-_view_from_Charles_Bridge_%28by_Pudelek%29.jpg",
       "docs": [
         { "label": "Itinerary", "file": "trips/2026-08-prague-budapest/itinerary.md" },
         { "label": "Budget", "file": "trips/2026-08-prague-budapest/budget.md" }
       ]
     }
+  ],
+  "credits": [
+    { "label": "Prague panorama", "by": "Diliff", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Prague_Panorama_-_Oct_2010.jpg" },
+    { "label": "Prague, from Charles Bridge", "by": "Pudelek (Marcin Szala)", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Prague_-_view_from_Charles_Bridge_(by_Pudelek).jpg" },
+    { "label": "Budapest Parliament at night", "by": "Florian Fèvre", "lic": "CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Danube_and_Hungarian_Parliament_Building_by_night.jpg" }
   ]
 }
