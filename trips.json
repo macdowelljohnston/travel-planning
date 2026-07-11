@@ -1,0 +1,25 @@
+{
+  "site": {
+    "title": "Travel Planning",
+    "tagline": "Itineraries, built to party and to browse."
+  },
+  "trips": [
+    {
+      "id": "2026-08-prague-budapest",
+      "title": "Prague + Budapest",
+      "subtitle": "Lads Trip",
+      "emoji": "🍺",
+      "flags": "🇨🇿 🇭🇺",
+      "dates": "27–31 Aug 2026",
+      "nights": 4,
+      "travelers": 8,
+      "budget": "Mid-range",
+      "status": "Planning",
+      "gradient": ["#7c5cff", "#ff5c8a"],
+      "docs": [
+        { "label": "Itinerary", "file": "trips/2026-08-prague-budapest/itinerary.md" },
+        { "label": "Budget", "file": "trips/2026-08-prague-budapest/budget.md" }
+      ]
+    }
+  ]
+}
