@@ -8,6 +8,22 @@
   },
   "trips": [
     {
+      "id": "2026-08-san-sebastian",
+      "title": "San Sebastián",
+      "subtitle": "A Basque Coast Escape",
+      "location": "Basque Country, Spain",
+      "emoji": "",
+      "flags": "🇪🇸",
+      "dates": "17–20 August 2026",
+      "nights": 3,
+      "status": "Planned",
+      "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/San_Sebastian_Bay_Panorama.jpg/1920px-San_Sebastian_Bay_Panorama.jpg",
+      "hero": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/San_Sebastian_06_2012_Panorama_2501.jpg/1920px-San_Sebastian_06_2012_Panorama_2501.jpg",
+      "docs": [
+        { "label": "Itinerary", "file": "trips/2026-08-san-sebastian/itinerary.md" }
+      ]
+    },
+    {
       "id": "2026-08-prague-budapest",
       "title": "Prague & Budapest",
       "subtitle": "A Bohemian–Danubian Escape",
@@ -30,6 +46,8 @@
   "credits": [
     { "label": "Prague panorama", "by": "Diliff", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Prague_Panorama_-_Oct_2010.jpg" },
     { "label": "Prague, from Charles Bridge", "by": "Pudelek (Marcin Szala)", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Prague_-_view_from_Charles_Bridge_(by_Pudelek).jpg" },
-    { "label": "Budapest Parliament at night", "by": "Florian Fèvre", "lic": "CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Danube_and_Hungarian_Parliament_Building_by_night.jpg" }
+    { "label": "Budapest Parliament at night", "by": "Florian Fèvre", "lic": "CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Danube_and_Hungarian_Parliament_Building_by_night.jpg" },
+    { "label": "San Sebastián bay", "by": "Phillip Maiwald (Nikopol)", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:San_Sebastian_Bay_Panorama.jpg" },
+    { "label": "San Sebastián panorama", "by": "Mario Roberto Durán Ortiz", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:San_Sebastian_06_2012_Panorama_2501.jpg" }
   ]
 }
