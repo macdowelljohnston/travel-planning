@@ -1,4 +1,4 @@
-# Budget — {Trip Name}
+# Budget: {Trip Name}
 
 **Total budget:** {amount}
 **Currency:** {currency}

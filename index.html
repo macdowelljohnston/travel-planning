@@ -343,7 +343,7 @@
     /* Footer */
     function renderFooter() {
       const cr = (DATA.credits || []).map(c =>
-        `<a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.label)}</a> — ${esc(c.by)}, ${esc(c.lic)}`).join(' &nbsp;·&nbsp; ');
+        `<a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.label)}</a>, ${esc(c.by)}, ${esc(c.lic)}`).join(' &nbsp;·&nbsp; ');
       document.getElementById('footer').innerHTML = `
         <div class="foot-inner reveal">
           <div class="foot-mark">${esc(DATA.site?.wordmark || 'The Itinerary')}</div>
@@ -395,7 +395,7 @@
           <div class="section-head reveal">
             <span class="eyebrow">The Collection</span>
             <h2>Journeys</h2>
-            <p>Every trip, composed end to end — where to stay, what to see, and how the nights unfold.</p>
+            <p>Every trip, composed end to end: where to stay, what to see, and how the nights unfold.</p>
           </div>
           <div class="toolbar reveal">
             <label class="search"><span class="mag">✦</span>

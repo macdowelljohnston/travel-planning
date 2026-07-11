@@ -1,4 +1,4 @@
-# Packing List — {Trip Name}
+# Packing List: {Trip Name}
 
 **Climate:** {expected weather}
 **Trip length:** {n} days

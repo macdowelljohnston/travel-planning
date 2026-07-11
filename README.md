@@ -19,7 +19,7 @@ travel-planning/
    ```
    (e.g. `trips/2026-japan/`)
 2. Rename and fill out the copied `itinerary.md`.
-3. Add supporting files as needed — bookings, maps, budget, packing list.
+3. Add supporting files as needed: bookings, maps, budget, packing list.
 
 ## Naming convention
 
@@ -37,7 +37,7 @@ contents, booking-checklist progress bars).
 python -m http.server 8000
 # then open http://localhost:8000
 ```
-(Open via a local server, not the raw file — the app fetches markdown over HTTP.)
+(Open via a local server, not the raw file, because the app fetches markdown over HTTP.)
 
 **Add a trip to the viewer:** add an entry to [`trips.json`](trips.json) pointing at the
 trip's markdown files. That's the only wiring step.
@@ -48,6 +48,6 @@ plan with private Pages.
 
 ## Templates available
 
-- [`templates/itinerary.md`](templates/itinerary.md) — day-by-day itinerary
-- [`templates/packing-list.md`](templates/packing-list.md) — packing checklist
-- [`templates/budget.md`](templates/budget.md) — trip budget tracker
+- [`templates/itinerary.md`](templates/itinerary.md): day-by-day itinerary
+- [`templates/packing-list.md`](templates/packing-list.md): packing checklist
+- [`templates/budget.md`](templates/budget.md): trip budget tracker

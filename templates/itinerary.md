@@ -1,4 +1,4 @@
-# {Trip Name} — Itinerary
+# {Trip Name}: Itinerary
 
 **Dates:** {start} – {end}
 **Travelers:** {names}
@@ -22,14 +22,14 @@
 
 ## Day-by-day
 
-### Day 1 — {date} — {city}
+### Day 1 · {date} · {city}
 - **Morning:**
 - **Afternoon:**
 - **Evening:**
 - **Meals:**
 - **Notes:**
 
-### Day 2 — {date} — {city}
+### Day 2 · {date} · {city}
 - **Morning:**
 - **Afternoon:**
 - **Evening:**
@@ -38,7 +38,7 @@
 
 ## Reservations to make
 
-- [ ] {restaurant / activity} — book by {date}
+- [ ] {restaurant / activity}: book by {date}
 
 ## Ideas / maybe
 
