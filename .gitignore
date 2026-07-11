@@ -1,0 +1,18 @@
+# Sensitive documents — never commit
+*passport*
+*visa*
+*boarding-pass*
+confirmations/
+*.pdf
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.vscode/
+.idea/
+
+# Scratch
+*.tmp
+scratch/
