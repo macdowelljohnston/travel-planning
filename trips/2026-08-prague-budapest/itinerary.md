@@ -41,15 +41,17 @@
 
 - **~10:00–11:30** — Land, bags, pre-booked minivan to the Airbnb (~30–40 min). Bags may beat check-in — arrange a luggage drop.
 - **Lunch (first beers):** classic Czech beer hall. **Lokál Dlouhááá** (fresh tank Pilsner Urquell, great cheap Czech food) is the move. *U Fleků* is the touristy-but-fun brewery alternative.
-- **Afternoon (easy orientation):** stroll Old Town Square → Astronomical Clock → Charles Bridge. Then decompress at a **beer garden** — **Riegrovy Sady** (lively, local, big group friendly) or **Letná** (postcard views over the river & city).
+- **Afternoon (orientation on wheels): 🚲 BEER BIKE.** Book a ~1.5–2hr beer-bike tour for 8 — it's your city intro *and* a warm-up, but low-key enough not to wreck the ease-in day. Cruises past the main sights while you drink. Book ahead for a group of 8 (they sell out summer weekends).
+  - Alt if you'd rather stay off the booze early: stroll Old Town Square → Astronomical Clock → Charles Bridge, then a **beer garden** (**Riegrovy Sady** or **Letná** for views).
 - **Evening (ease-in crawl):** dinner, then a few Old Town bars. Good picks: **Hemingway Bar** (top cocktails), **Vzorkovna / "Dog Bar"** (wild cheap underground, very lads), **Anonymous Bar**. Keep it to ~1–2am — pace yourselves.
+- **Optional late add-on — adult scene:** Prague's well-known gentlemen's clubs (e.g. Goldfingers, Darling Cabaret) are an option tonight if the group wants it. ⚠️ **Read the safety note at the bottom first** — the scam risk here is real.
 
 ### Day 2 — Fri 28 Aug — Full day + the BIG night (all-nighter → train)
 > Save some energy in the day; tonight runs till the 06:01.
 
 - **Morning/midday (sightseeing + views):** Prague Castle + **Malá Strana** (Lesser Town), walk back over Charles Bridge. Or a relaxed morning if bodies need it.
 - **Shopping:** Na Příkopě & Pařížská (Pařížská = luxury flex), or design/gift shops around Old Town.
-- **Afternoon (beer garden reset):** Letná or Riegrovy Sady again — hydrate-ish, big group energy, sunset views. Optional lads add-on: **shooting range** or **beer-bike** (both very popular here) if you want one adrenaline hit.
+- **Afternoon (beer garden reset):** Letná or Riegrovy Sady — hydrate-ish, big group energy, sunset views. Keep it lighter than it sounds: you're going all night, so this is fuel + pace, not send-it. (Beer bike was yesterday by design.)
 - **Early dinner + pre-drinks** at the Airbnb (~7–8pm) — fuel up, you're going long.
 - **The main event (crawl → club):**
   - Old Town bar crawl → then a proper club. Big-night options: **Karlovy Lázně** (5-floor mega-club, iconic lads-trip spot), **Lucerna Music Bar** (legendary 80s/90s video party — check the night's schedule), **Roxy**, **Chapeau Rouge** (multi-floor party bar).
@@ -93,6 +95,15 @@
 - [ ] Any lads add-ons you want locked in (shooting range / beer bike / strip-club scene / specific clubs)?
 - [ ] Exact **return flight times** (sets the Monday schedule)
 - [ ] Once picked, I'll drop specific Airbnb search links, table-booking contacts, and a costed budget into this folder.
+
+## ⚠️ Adult-scene safety note (read before you go)
+Prague's adult venues are legal and mainstream, but tourist **bill scams are common**. Protect yourselves:
+- **Agree every price up front** — entry, each drink, and any "private" anything. Get it in writing/on the menu.
+- **Never run a tab or hand over a card to hold.** Pay per round, in cash, and keep the receipt.
+- **One inflated "champagne" can be hundreds of €.** If a hostess pressures bottles, decline clearly.
+- **Ignore street promoters / "free entry" flyers** — those are the classic scam funnels. Go to a known-name venue directly.
+- **Buddy system + a sober-ish anchor.** Nobody wanders off alone; agree a spend cap before entering.
+- Same rules apply in Budapest — if in doubt, ruin bars are the safer party bet.
 
 ## Notes
 - Prices/opening hours/club nights are 2026 — **verify closer to the date**; nightlife schedules shift.
