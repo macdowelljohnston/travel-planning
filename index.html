@@ -286,6 +286,19 @@
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
     .reveal.in { opacity: 1; transform: none; }
 
+    /* next-trip countdown on hero */
+    .countdown { margin-top: 22px; font-family: var(--sans); font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: #e9d9b6; display: inline-flex; align-items: center; gap: 9px; }
+    .countdown::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 0 rgba(203,162,92,.6); animation: pulse 2s infinite; }
+    .countdown strong { color: #fff; font-weight: 600; letter-spacing: .06em; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(203,162,92,.55); } 70% { box-shadow: 0 0 0 8px rgba(203,162,92,0); } 100% { box-shadow: 0 0 0 0 rgba(203,162,92,0); } }
+
+    /* easter-egg confetti + toast */
+    .confetti-layer { position: fixed; inset: 0; pointer-events: none; z-index: 9998; overflow: hidden; }
+    .confetti-layer span { position: absolute; top: -48px; will-change: transform; animation: confetti-fall linear forwards; }
+    @keyframes confetti-fall { to { transform: translateY(110vh) rotate(420deg); opacity: .85; } }
+    .toast { position: fixed; left: 50%; bottom: 42px; transform: translate(-50%, 18px); z-index: 10000; background: var(--ink); color: var(--bg); font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: .02em; padding: 12px 22px; border-radius: 99px; opacity: 0; transition: opacity .3s ease, transform .3s ease; box-shadow: var(--shadow-lg); }
+    .toast.in { opacity: 1; transform: translate(-50%, 0); }
+
     @media (max-width: 860px) {
       .r-layout { grid-template-columns: 1fr; gap: 0; }
       .toc { display: none; }
@@ -337,6 +350,60 @@
     const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
     const slug = s => s.toLowerCase().replace(/[^\w\s-]/g,'').trim().replace(/\s+/g,'-');
     const tripById = id => DATA.trips.find(t => t.id === id);
+
+    // days until an ISO date (from local midnight)
+    function daysUntil(iso) {
+      const now = new Date(); now.setHours(0,0,0,0);
+      return Math.round((new Date(iso + 'T00:00:00') - now) / 86400000);
+    }
+    // hero line for the soonest upcoming trip
+    function nextTripLine() {
+      const up = (DATA.trips || []).filter(t => t.start)
+        .map(t => ({ t, d: daysUntil(t.start) }))
+        .filter(x => x.d >= 0).sort((a,b) => a.d - b.d);
+      if (!up.length) return '';
+      const { t, d } = up[0];
+      const when = d === 0 ? 'today' : d === 1 ? 'tomorrow' : `in ${d} days`;
+      return `<div class="countdown">Next journey&nbsp; <strong>${esc(t.title)}</strong>&nbsp; ${when}</div>`;
+    }
+
+    // ---- easter eggs ----
+    function toast(msg) {
+      document.querySelector('.toast')?.remove();
+      const el = document.createElement('div');
+      el.className = 'toast'; el.textContent = msg;
+      document.body.appendChild(el);
+      requestAnimationFrame(() => el.classList.add('in'));
+      setTimeout(() => { el.classList.remove('in'); setTimeout(() => el.remove(), 400); }, 2800);
+    }
+    function travelConfetti() {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }
+      const emojis = ['✈️','🌍','🍸','🏖️','🚆','🗺️','🥾','🍺','🍴','☕'];
+      const layer = document.createElement('div');
+      layer.className = 'confetti-layer';
+      document.body.appendChild(layer);
+      for (let n = 0; n < 90; n++) {
+        const s = document.createElement('span');
+        s.textContent = emojis[n % emojis.length];
+        s.style.left = Math.random() * 100 + 'vw';
+        s.style.animationDelay = (Math.random() * 0.9) + 's';
+        s.style.animationDuration = (2.6 + Math.random() * 2.2) + 's';
+        s.style.fontSize = (15 + Math.random() * 22) + 'px';
+        layer.appendChild(s);
+      }
+      setTimeout(() => layer.remove(), 5600);
+    }
+    (function konami() {
+      const seq = ['arrowup','arrowup','arrowdown','arrowdown','arrowleft','arrowright','arrowleft','arrowright','b','a'];
+      let i = 0;
+      window.addEventListener('keydown', e => {
+        const k = e.key.toLowerCase();
+        if (k === seq[i]) { i++; if (i === seq.length) { i = 0; travelConfetti(); toast('✈️ First class unlocked'); } }
+        else { i = (k === seq[0]) ? 1 : 0; }
+      });
+    })();
+    // a little hello for the curious
+    try { console.log('%c✈ The Itinerary — you found the console. Try the Konami code: ↑ ↑ ↓ ↓ ← → ← → B A', 'font-size:13px;color:#cba25c'); } catch (e) {}
 
     /* topbar solidity + reveal */
     let io;
@@ -396,6 +463,7 @@
             <span class="eyebrow"><span class="rule"></span> &nbsp; ${esc(s.eyebrow||'Private Itineraries')} &nbsp; <span class="rule"></span></span>
             <h1>${esc(s.title||'Travel Planning')}</h1>
             <p class="tagline">${esc(s.tagline||'')}</p>
+            ${nextTripLine()}
           </div>
           <div class="scrollcue"><span>Explore</span><span class="line"></span></div>
         </section>
