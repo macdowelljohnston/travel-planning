@@ -75,7 +75,8 @@
         { "name": "London", "cc": "GB", "lat": 51.507, "lng": -0.128 }
       ],
       "docs": [
-        { "label": "Itinerary", "file": "trips/2026-08-budapest-berlin/itinerary.md" }
+        { "label": "Itinerary", "file": "trips/2026-08-budapest-berlin/itinerary.md" },
+        { "label": "Vienna", "file": "trips/2026-08-budapest-berlin/vienna.md" }
       ]
     }
   ],

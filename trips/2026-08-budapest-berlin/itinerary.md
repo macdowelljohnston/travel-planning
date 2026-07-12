@@ -26,18 +26,14 @@
 - 🚆 **11:40: Railjet from Budapest-Keleti → Wien Hauptbahnhof, arriving 14:20.** About 2h40, hourly at :40 past, with a restaurant car and draught beer on board. This lands you right at hotel check-in with the whole evening free. (Want more Vienna this afternoon? Take the 09:40 → 12:20 instead.)
 - 🚕 **To the hotel:** from Wien Hauptbahnhof take the **U1 metro straight to Schwedenplatz** (no changes), then a 3-minute walk. Around 15 minutes door to door.
 - 🛏️ **Check into Hotel Marc Aurel**, Marc-Aurel-Straße 8, 1010 Wien. A quiet street in the 1st district, steps from Schwedenplatz and the Danube canal, and a 5-minute stroll to Stephansdom. Drop the bags. (Booked, $120.)
-- 🍴 **Late lunch** near the centre, then ease in.
-- 🍸 **First evening in Vienna.** A stroll past a floodlit **Stephansdom**, dinner, and a glowing glass of Grüner Veltliner. No train to catch tonight.
+- 🌭 **Afternoon and evening in Vienna:** Stephansdom on your doorstep, a Kaffeehaus, your first Würstelstand, and a night in the Bermuda Triangle bar cluster around your hotel.
 
-> ⭐ **The Move:** an unhurried first night. This is exactly what you booked the Vienna room for: the city without a clock running.
+> 💡 **The full Vienna plan** (day-by-day, plus every bar, sausage stand, and museum your friends flagged) lives in the **Vienna** tab.
 
 ### Day 2 · Tue 1 Sep · Vienna, then the night train
 > A full day in one of Europe's most beautiful cities, capped by boarding the sleeper to Berlin.
 
-- ☕ **Slow morning.** Coffee and cake at **Café Central**, the grand old literary café.
-- 👀 **One palace, done well.** **Schönbrunn** (gardens and the Gloriette view) or the **Belvedere** (Klimt's "The Kiss"). Then the **Ringstrasse** and the **Hofburg**.
-- 🍴 **Lunch at the Naschmarkt**, or a schnitzel at **Figlmüller**.
-- 🛍️ **Afternoon at leisure:** the **MuseumsQuartier** courtyards, or a long walk and one more Kaffeehaus.
+- 🖼️ **A full Vienna day:** a world-class museum (KHM, Albertina, or Leopold), the Baroque core, and as many Würstelstände as you can manage. Full plan and rec list in the **Vienna** tab.
 - 🚕 **Luggage:** check out in the morning and leave your bags at Hotel Marc Aurel for the day (central, easy to swing back for). Early dinner, then the **U1 from Schwedenplatz direct to Hauptbahnhof** for the sleeper.
 - 🚆 **22:02: Nightjet NJ456, Wien Hbf → Berlin Hbf, arriving 07:33.** Daily, about 9.5 hours.
 - 🛏️ **Sleep on rails.** Book a **sleeper** (bed from ~€89, breakfast included) over a seat. A private cabin (from ~€159) is the comfort splurge for a solo traveller.
