@@ -299,6 +299,36 @@
     .toast { position: fixed; left: 50%; bottom: 42px; transform: translate(-50%, 18px); z-index: 10000; background: var(--ink); color: var(--bg); font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: .02em; padding: 12px 22px; border-radius: 99px; opacity: 0; transition: opacity .3s ease, transform .3s ease; box-shadow: var(--shadow-lg); }
     .toast.in { opacity: 1; transform: translate(-50%, 0); }
 
+    /* ---------- Passport stats ---------- */
+    .stats-band { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg-elev); }
+    .stats-inner { max-width: var(--maxw); margin: 0 auto; padding: 40px 28px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+    .stat { text-align: center; position: relative; }
+    .stat + .stat::before { content: ""; position: absolute; left: -10px; top: 12%; height: 76%; width: 1px; background: var(--line); }
+    .stat .num { font-family: var(--serif); font-weight: 600; font-size: clamp(34px, 5vw, 52px); line-height: 1; color: var(--ink); letter-spacing: -.01em; }
+    .stat .lab { margin-top: 10px; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    @media (max-width: 720px) {
+      .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 28px 20px; }
+      .stat:nth-child(odd)::before, .stat + .stat::before { display: none; }
+    }
+
+    /* ---------- Atlas / route map ---------- */
+    .atlas { background: var(--bg); }
+    .atlas-inner { max-width: var(--maxw); margin: 0 auto; padding: 96px 28px; }
+    .atlas-map { position: relative; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background:
+      radial-gradient(120% 120% at 50% 0%, color-mix(in srgb, var(--gold) 6%, transparent), transparent 60%), var(--bg-elev);
+      box-shadow: var(--shadow); }
+    .atlas-map svg { display: block; width: 100%; height: auto; }
+    .grat { stroke: var(--line); stroke-width: 1; fill: none; opacity: .6; }
+    .route { fill: none; stroke: var(--gold); stroke-width: 2.5; stroke-linecap: round; opacity: .9; }
+    .route.draw { transition: stroke-dashoffset 1.8s cubic-bezier(.4,.5,.2,1); }
+    .plane { fill: var(--gold); opacity: 0; }
+    .plane.show { opacity: 1; transition: opacity .3s ease; }
+    .city-dot { fill: var(--bg-elev); stroke: var(--gold); stroke-width: 2.5; }
+    .city-halo { fill: var(--gold); opacity: .16; }
+    .city-label { font-family: var(--sans); font-size: 15px; font-weight: 600; fill: var(--ink); }
+    .city-label.sub { fill: var(--text-faint); font-weight: 500; }
+    @media (prefers-color-scheme: dark) { .city-label { fill: var(--ink); } }
+
     @media (max-width: 860px) {
       .r-layout { grid-template-columns: 1fr; gap: 0; }
       .toc { display: none; }
@@ -405,6 +435,113 @@
     // a little hello for the curious
     try { console.log('%c✈ The Itinerary — you found the console. Try the Konami code: ↑ ↑ ↓ ↓ ← → ← → B A', 'font-size:13px;color:#cba25c'); } catch (e) {}
 
+    /* ---- Passport stats ---- */
+    function haversineKm(a, b) {
+      const R = 6371, toR = d => d * Math.PI / 180;
+      const dLat = toR(b.lat - a.lat), dLng = toR(b.lng - a.lng);
+      const s = Math.sin(dLat/2)**2 + Math.cos(toR(a.lat))*Math.cos(toR(b.lat))*Math.sin(dLng/2)**2;
+      return 2 * R * Math.asin(Math.sqrt(s));
+    }
+    function computeStats() {
+      const cities = new Set(), countries = new Set();
+      let nights = 0, km = 0, trips = 0;
+      (DATA.trips || []).forEach(t => {
+        trips++; nights += t.nights || 0;
+        const cs = t.cities || [];
+        cs.forEach(c => { cities.add(c.name); if (c.cc) countries.add(c.cc); });
+        for (let i = 0; i < cs.length - 1; i++) km += haversineKm(cs[i], cs[i+1]);
+      });
+      return { trips, countries: countries.size, cities: cities.size, nights, miles: Math.round(km * 0.621371) };
+    }
+    function statsBand() {
+      const s = computeStats();
+      const tiles = [[s.trips,'Journeys'],[s.countries,'Countries'],[s.cities,'Cities'],[s.nights,'Nights away'],[s.miles,'Miles']];
+      return `<section class="stats-band"><div class="stats-inner">${
+        tiles.map(([v,l]) => `<div class="stat"><div class="num" data-count="${v}">0</div><div class="lab">${l}</div></div>`).join('')
+      }</div></section>`;
+    }
+
+    /* ---- Atlas / route map ---- */
+    function mercator(lat, lng) { return { x: lng, y: Math.log(Math.tan(Math.PI/4 + (lat*Math.PI/180)/2)) }; }
+    function buildAtlas() {
+      const all = [];
+      (DATA.trips || []).forEach(t => (t.cities || []).forEach(c => all.push(c)));
+      if (all.length < 2) return '';
+      const uniq = {}; all.forEach(c => { uniq[c.name] = c; });
+      const cities = Object.values(uniq);
+      const proj = cities.map(c => ({ c, ...mercator(c.lat, c.lng) }));
+      const xs = proj.map(p => p.x), ys = proj.map(p => p.y);
+      const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+      const W = 1000, pad = 130, dw = W - 2*pad;
+      const dh = dw * ((maxY - minY) / (maxX - minX)), H = dh + 2*pad;
+      const sx = x => pad + (x - minX) / (maxX - minX) * dw;
+      const sy = y => H - (pad + (y - minY) / (maxY - minY) * dh);
+      const pos = {}; proj.forEach(p => { pos[p.c.name] = { x: sx(p.x), y: sy(p.y) }; });
+      const routes = (DATA.trips || []).map((t, ti) => {
+        const cs = t.cities || []; let d = '';
+        for (let i = 0; i < cs.length - 1; i++) {
+          const a = pos[cs[i].name], b = pos[cs[i+1].name];
+          const mx = (a.x+b.x)/2, my = (a.y+b.y)/2, dx = b.x-a.x, dy = b.y-a.y, len = Math.hypot(dx,dy) || 1;
+          const nx = -dy/len, ny = dx/len, k = len * 0.16;
+          const c1 = { x: mx+nx*k, y: my+ny*k }, c2 = { x: mx-nx*k, y: my-ny*k };
+          const ctl = (c1.y < c2.y) ? c1 : c2; // bow upward
+          d += `M ${a.x.toFixed(1)} ${a.y.toFixed(1)} Q ${ctl.x.toFixed(1)} ${ctl.y.toFixed(1)} ${b.x.toFixed(1)} ${b.y.toFixed(1)} `;
+        }
+        return d ? `<path class="route" data-trip="${ti}" d="${d.trim()}"></path>` : '';
+      }).join('');
+      // stagger labels above/below to reduce overlap
+      const sorted = cities.map(c => ({ c, ...pos[c.name] })).sort((a,b) => a.x - b.x);
+      let lastX = -1e9, lastBelow = false;
+      sorted.forEach(o => { o.below = (o.x - lastX < 74) ? !lastBelow : false; lastX = o.x; lastBelow = o.below; });
+      const dots = sorted.map(o => {
+        const ly = o.below ? (o.y + 26).toFixed(1) : (o.y - 15).toFixed(1);
+        return `<circle class="city-halo" cx="${o.x.toFixed(1)}" cy="${o.y.toFixed(1)}" r="11"></circle>
+          <circle class="city-dot" cx="${o.x.toFixed(1)}" cy="${o.y.toFixed(1)}" r="5"></circle>
+          <text class="city-label" x="${o.x.toFixed(1)}" y="${ly}" text-anchor="middle">${esc(o.c.name)}</text>`;
+      }).join('');
+      return `<section class="atlas"><div class="atlas-inner">
+        <div class="section-head reveal">
+          <span class="eyebrow">The Atlas</span>
+          <h2>Every route, one map</h2>
+          <p>The cities you've strung together, drawn line by line.</p>
+        </div>
+        <div class="atlas-map reveal"><svg viewBox="0 0 ${W} ${Math.round(H)}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Map of trip routes">${routes}${dots}</svg></div>
+      </div></section>`;
+    }
+    function countUp(el, target) {
+      const dur = 1300, t0 = performance.now();
+      (function tick(now) {
+        const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * e).toLocaleString();
+        if (p < 1) requestAnimationFrame(tick); else el.textContent = target.toLocaleString();
+      })(t0);
+    }
+    function initHomeAnimations() {
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const nums = document.querySelectorAll('.num[data-count]');
+      const routes = [...document.querySelectorAll('.atlas-map .route')];
+      if (window._atlasDone || reduce) {
+        nums.forEach(n => n.textContent = (+n.dataset.count).toLocaleString());
+        routes.forEach(r => { r.style.strokeDasharray = 'none'; r.style.strokeDashoffset = '0'; });
+        return;
+      }
+      window._atlasDone = true;
+      const band = document.querySelector('.stats-band');
+      if (band) new IntersectionObserver((es, ob) => es.forEach(e => {
+        if (e.isIntersecting) { e.target.querySelectorAll('.num[data-count]').forEach(n => countUp(n, +n.dataset.count)); ob.disconnect(); }
+      }), { rootMargin: '0px 0px -12% 0px' }).observe(band);
+      const map = document.querySelector('.atlas-map');
+      if (map && routes.length) {
+        routes.forEach(r => { const L = r.getTotalLength(); r.style.strokeDasharray = L; r.style.strokeDashoffset = L; });
+        new IntersectionObserver((es, ob) => es.forEach(e => {
+          if (e.isIntersecting) {
+            routes.forEach((r, i) => { r.classList.add('draw'); r.style.transitionDelay = (i * 0.5) + 's'; requestAnimationFrame(() => { r.style.strokeDashoffset = '0'; }); });
+            ob.disconnect();
+          }
+        }), { rootMargin: '0px 0px -18% 0px' }).observe(map);
+      }
+    }
+
     /* topbar solidity + reveal */
     let io;
     function setupReveal() {
@@ -467,6 +604,7 @@
           </div>
           <div class="scrollcue"><span>Explore</span><span class="line"></span></div>
         </section>
+        ${statsBand()}
         <section class="section">
           <div class="section-head reveal">
             <span class="eyebrow">The Collection</span>
@@ -479,13 +617,15 @@
             </label>
           </div>
           ${trips.length ? `<div class="grid">${cards}</div>` : `<div class="empty">No journeys match “${esc(filter)}”.</div>`}
-        </section>`;
+        </section>
+        ${buildAtlas()}`;
       window._heroH = document.querySelector('.hero').offsetHeight;
       onScroll();
       const si = document.getElementById('searchInput');
       si.oninput = e => { renderHome(e.target.value); };
       if (filter) { si.focus(); si.setSelectionRange(si.value.length, si.value.length); }
       setupReveal();
+      initHomeAnimations();
     }
 
     /* READER */

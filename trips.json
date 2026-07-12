@@ -21,6 +21,10 @@
       "status": "Planned",
       "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/San_Sebastian_Bay_Panorama.jpg/1920px-San_Sebastian_Bay_Panorama.jpg",
       "hero": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/San_Sebastian_06_2012_Panorama_2501.jpg/1920px-San_Sebastian_06_2012_Panorama_2501.jpg",
+      "cities": [
+        { "name": "Bilbao", "cc": "ES", "lat": 43.263, "lng": -2.935 },
+        { "name": "San Sebastián", "cc": "ES", "lat": 43.318, "lng": -1.981 }
+      ],
       "docs": [
         { "label": "Itinerary", "file": "trips/2026-08-san-sebastian/itinerary.md" }
       ]
@@ -41,6 +45,10 @@
       "status": "In Planning",
       "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Danube_and_Hungarian_Parliament_Building_by_night.jpg/1920px-Danube_and_Hungarian_Parliament_Building_by_night.jpg",
       "hero": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Prague_-_view_from_Charles_Bridge_%28by_Pudelek%29.jpg/1920px-Prague_-_view_from_Charles_Bridge_%28by_Pudelek%29.jpg",
+      "cities": [
+        { "name": "Prague", "cc": "CZ", "lat": 50.075, "lng": 14.437 },
+        { "name": "Budapest", "cc": "HU", "lat": 47.497, "lng": 19.040 }
+      ],
       "docs": [
         { "label": "Itinerary", "file": "trips/2026-08-prague-budapest/itinerary.md" },
         { "label": "Budget", "file": "trips/2026-08-prague-budapest/budget.md" }
@@ -60,6 +68,12 @@
       "status": "Booking trains",
       "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Juni_2015_Brandenburg_Gate_Berlin_Germany_Evening.jpg/1920px-Juni_2015_Brandenburg_Gate_Berlin_Germany_Evening.jpg",
       "hero": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Berlin_skyline_from_Reichstag_dome.JPG/1920px-Berlin_skyline_from_Reichstag_dome.JPG",
+      "cities": [
+        { "name": "Budapest", "cc": "HU", "lat": 47.497, "lng": 19.040 },
+        { "name": "Vienna", "cc": "AT", "lat": 48.208, "lng": 16.373 },
+        { "name": "Berlin", "cc": "DE", "lat": 52.520, "lng": 13.405 },
+        { "name": "London", "cc": "GB", "lat": 51.507, "lng": -0.128 }
+      ],
       "docs": [
         { "label": "Itinerary", "file": "trips/2026-08-budapest-berlin/itinerary.md" }
       ]
