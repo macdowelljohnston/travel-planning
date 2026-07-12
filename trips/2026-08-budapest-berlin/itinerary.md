@@ -15,7 +15,7 @@
 | Mon 31 Aug, 11:40 → 14:20 | Railjet Budapest-Keleti → Wien Hbf | 🎯 To book |
 | Mon 31 Aug | Vienna, 1 night at Hotel Marc Aurel | ✅ Booked ($120) |
 | Tue 1 Sep, 22:02 → 07:33 | Nightjet NJ456 Wien Hbf → Berlin Hbf | 🎯 To book |
-| 2–3 Sep | Berlin, 2 nights with your friend | ✅ Locked |
+| 2–3 Sep | Berlin, 2 nights at Garner Hotel, Gendarmenmarkt | ✅ Booked (€92) |
 | Fri 4 Sep | Fly Berlin → London | ⏳ To book |
 
 ---
@@ -43,8 +43,8 @@
 ### Day 3 · Wed 2 Sep · Arrive Berlin
 > You wake up pulling into Berlin Hbf, meet your friend, and the tag-on proper begins.
 
-- 🚆 **~07:33: arrive Berlin Hauptbahnhof**, central and slick.
-- 🛏️ **Meet your friend, check in, reset.** Berlin night 1.
+- 🚆 **~07:33: arrive Berlin Hauptbahnhof**, central and slick. About 10 minutes to the hotel by U/S-Bahn or a short taxi.
+- 🛏️ **Garner Hotel Berlin, Gendarmenmarkt.** Right on Berlin's most elegant square in central Mitte, walkable to Museum Island, Unter den Linden, and the Brandenburg Gate. Check-in is mid-afternoon, so drop the bags, meet your friend, and head out. Berlin night 1.
 - 👀 *(Berlin activities to be planned separately.)*
 
 ### Day 4 · Thu 3 Sep · Berlin
@@ -55,6 +55,7 @@
 ### Day 5 · Fri 4 Sep · Fly home
 > One short flight and you are back in London, inside your deadline with a day to spare.
 
+- 🛏️ **Check out of the Garner Hotel** (leave bags if your flight is later in the day).
 - ✈️ **Berlin (BER) → London**, about 1h55. Frequent flights on BA, easyJet, Ryanair, Lufthansa to LHR / LGW / STN.
 
 ---
