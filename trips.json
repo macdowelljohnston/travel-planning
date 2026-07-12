@@ -1,27 +1,27 @@
 {
   "site": {
-    "title": "Travel Planning",
+    "title": "The Itinerary",
     "wordmark": "The Itinerary",
-    "eyebrow": "Private Itineraries",
-    "tagline": "Considered journeys, composed with care: where to wander, where to dine, and where the night goes.",
-    "hero": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Prague_Panorama_-_Oct_2010.jpg/1920px-Prague_Panorama_-_Oct_2010.jpg"
+    "eyebrow": "Dispatches from London",
+    "tagline": "A personal record of journeys from a home base in London: where to wander, where to dine, and where the night goes.",
+    "established": "Founded MMXXV · London"
   },
   "trips": [
     {
       "id": "2026-08-san-sebastian",
+      "number": 9,
       "title": "San Sebastián",
       "subtitle": "A Basque Coast Escape",
       "location": "Basque Country, Spain",
-      "emoji": "",
       "flags": "🇪🇸",
       "dates": "17–20 August 2026",
       "start": "2026-08-17",
       "end": "2026-08-20",
       "nights": 3,
       "status": "Planned",
-      "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/San_Sebastian_Bay_Panorama.jpg/1920px-San_Sebastian_Bay_Panorama.jpg",
-      "hero": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/San_Sebastian_06_2012_Panorama_2501.jpg/1920px-San_Sebastian_06_2012_Panorama_2501.jpg",
+      "color": "#0e7c86",
       "cities": [
+        { "name": "London", "cc": "GB", "lat": 51.507, "lng": -0.128 },
         { "name": "Bilbao", "cc": "ES", "lat": 43.263, "lng": -2.935 },
         { "name": "San Sebastián", "cc": "ES", "lat": 43.318, "lng": -1.981 }
       ],
@@ -31,21 +31,20 @@
     },
     {
       "id": "2026-08-prague-budapest",
+      "number": 10,
       "title": "Prague & Budapest",
       "subtitle": "A Bohemian–Danubian Escape",
       "location": "Central Europe",
-      "emoji": "",
       "flags": "🇨🇿 🇭🇺",
       "dates": "27–31 August 2026",
       "start": "2026-08-27",
       "end": "2026-08-31",
       "nights": 4,
       "travelers": 8,
-      "budget": "Mid-range",
       "status": "In Planning",
-      "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Danube_and_Hungarian_Parliament_Building_by_night.jpg/1920px-Danube_and_Hungarian_Parliament_Building_by_night.jpg",
-      "hero": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Prague_-_view_from_Charles_Bridge_%28by_Pudelek%29.jpg/1920px-Prague_-_view_from_Charles_Bridge_%28by_Pudelek%29.jpg",
+      "color": "#a4731c",
       "cities": [
+        { "name": "London", "cc": "GB", "lat": 51.507, "lng": -0.128 },
         { "name": "Prague", "cc": "CZ", "lat": 50.075, "lng": 14.437 },
         { "name": "Budapest", "cc": "HU", "lat": 47.497, "lng": 19.040 }
       ],
@@ -56,18 +55,17 @@
     },
     {
       "id": "2026-08-vienna",
+      "number": 11,
       "title": "Vienna",
       "subtitle": "From Budapest, Onward to Berlin",
       "location": "Vienna, Austria",
-      "emoji": "",
       "flags": "🇭🇺 🇦🇹 🇩🇪",
       "dates": "31 Aug – 2 Sep 2026",
       "start": "2026-08-31",
       "end": "2026-09-02",
       "nights": 2,
-      "status": "Fully booked",
-      "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Panorama_from_Belvedere_-_Vienna.jpg/1920px-Panorama_from_Belvedere_-_Vienna.jpg",
-      "hero": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Panorama_from_Belvedere_-_Vienna.jpg/1920px-Panorama_from_Belvedere_-_Vienna.jpg",
+      "status": "Fully Booked",
+      "color": "#7d2c3f",
       "cities": [
         { "name": "Budapest", "cc": "HU", "lat": 47.497, "lng": 19.040 },
         { "name": "Vienna", "cc": "AT", "lat": 48.208, "lng": 16.373 },
@@ -80,18 +78,17 @@
     },
     {
       "id": "2026-09-berlin",
+      "number": 12,
       "title": "Berlin",
       "subtitle": "A Berlin Reunion",
       "location": "Berlin, Germany",
-      "emoji": "",
       "flags": "🇩🇪",
       "dates": "2 – 4 Sep 2026",
       "start": "2026-09-02",
       "end": "2026-09-04",
       "nights": 2,
       "status": "Planning",
-      "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Juni_2015_Brandenburg_Gate_Berlin_Germany_Evening.jpg/1920px-Juni_2015_Brandenburg_Gate_Berlin_Germany_Evening.jpg",
-      "hero": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Berlin_skyline_from_Reichstag_dome.JPG/1920px-Berlin_skyline_from_Reichstag_dome.JPG",
+      "color": "#3f4a5c",
       "cities": [
         { "name": "Berlin", "cc": "DE", "lat": 52.520, "lng": 13.405 },
         { "name": "London", "cc": "GB", "lat": 51.507, "lng": -0.128 }
@@ -99,16 +96,194 @@
       "docs": [
         { "label": "Itinerary", "file": "trips/2026-09-berlin/itinerary.md" }
       ]
+    },
+    {
+      "id": "2025-09-mallorca",
+      "number": 1,
+      "title": "Mallorca",
+      "subtitle": "The Season's Last Warm Sea",
+      "location": "Balearic Islands, Spain",
+      "flags": "🇪🇸",
+      "dates": "5–7 September 2025",
+      "start": "2025-09-05",
+      "end": "2025-09-07",
+      "nights": 2,
+      "status": "Logged",
+      "past": true,
+      "memory": "A long weekend of coves, late dinners, and the Mediterranean holding onto summer.",
+      "color": "#1d6a96",
+      "cities": [
+        { "name": "London", "cc": "GB", "lat": 51.507, "lng": -0.128 },
+        { "name": "Palma", "cc": "ES", "lat": 39.570, "lng": 2.650 }
+      ],
+      "docs": [
+        { "label": "Itinerary", "file": "trips/2025-09-mallorca/itinerary.md" }
+      ]
+    },
+    {
+      "id": "2025-10-tuscany",
+      "number": 2,
+      "title": "Pisa & Tuscany",
+      "subtitle": "Slow Roads Through the Hills",
+      "location": "Tuscany, Italy",
+      "flags": "🇮🇹",
+      "dates": "20–25 October 2025",
+      "start": "2025-10-20",
+      "end": "2025-10-25",
+      "nights": 5,
+      "status": "Logged",
+      "past": true,
+      "memory": "Pisa first, then a hire car into the hills to Montespertoli: wine, olive groves, October light.",
+      "color": "#b0563b",
+      "cities": [
+        { "name": "London", "cc": "GB", "lat": 51.507, "lng": -0.128 },
+        { "name": "Pisa", "cc": "IT", "lat": 43.716, "lng": 10.397 },
+        { "name": "Montespertoli", "cc": "IT", "lat": 43.643, "lng": 11.076 }
+      ],
+      "docs": [
+        { "label": "Itinerary", "file": "trips/2025-10-tuscany/itinerary.md" }
+      ]
+    },
+    {
+      "id": "2025-11-helsinki-tallinn",
+      "number": 3,
+      "title": "Helsinki & Tallinn",
+      "subtitle": "Two Capitals, One Baltic Crossing",
+      "location": "Finland & Estonia",
+      "flags": "🇫🇮 🇪🇪",
+      "dates": "28 Nov – 2 Dec 2025",
+      "start": "2025-11-28",
+      "end": "2025-12-02",
+      "nights": 4,
+      "status": "Logged",
+      "past": true,
+      "memory": "Winter-dark Helsinki, then the ferry across an icy Baltic to Tallinn's medieval old town.",
+      "color": "#6b8ba4",
+      "cities": [
+        { "name": "London", "cc": "GB", "lat": 51.507, "lng": -0.128 },
+        { "name": "Helsinki", "cc": "FI", "lat": 60.170, "lng": 24.938 },
+        { "name": "Tallinn", "cc": "EE", "lat": 59.437, "lng": 24.754 }
+      ],
+      "docs": [
+        { "label": "Itinerary", "file": "trips/2025-11-helsinki-tallinn/itinerary.md" }
+      ]
+    },
+    {
+      "id": "2026-02-saudi-arabia",
+      "number": 4,
+      "title": "Riyadh & AlUla",
+      "subtitle": "Desert Towers and Ancient Tombs",
+      "location": "Saudi Arabia",
+      "flags": "🇸🇦",
+      "dates": "5–13 February 2026",
+      "start": "2026-02-05",
+      "end": "2026-02-13",
+      "nights": 8,
+      "status": "Logged",
+      "past": true,
+      "memory": "Riyadh's skyline, a night at the Aramco desert oasis, then the Nabataean tombs and rock arches of AlUla.",
+      "color": "#c49a5a",
+      "cities": [
+        { "name": "London", "cc": "GB", "lat": 51.507, "lng": -0.128 },
+        { "name": "Riyadh", "cc": "SA", "lat": 24.713, "lng": 46.675 },
+        { "name": "AlUla", "cc": "SA", "lat": 26.608, "lng": 37.923 }
+      ],
+      "docs": [
+        { "label": "Itinerary", "file": "trips/2026-02-saudi-arabia/itinerary.md" }
+      ]
+    },
+    {
+      "id": "2026-02-geneva",
+      "number": 5,
+      "title": "Geneva",
+      "subtitle": "Alpine Air After the Desert",
+      "location": "Switzerland",
+      "flags": "🇨🇭",
+      "dates": "13–16 February 2026",
+      "start": "2026-02-13",
+      "end": "2026-02-16",
+      "nights": 3,
+      "status": "Logged",
+      "past": true,
+      "memory": "Straight from Riyadh to the lake: crisp air, the Jet d'Eau, fondue, and mountains on every horizon.",
+      "color": "#2f5d62",
+      "cities": [
+        { "name": "Riyadh", "cc": "SA", "lat": 24.713, "lng": 46.675 },
+        { "name": "Geneva", "cc": "CH", "lat": 46.204, "lng": 6.143 },
+        { "name": "London", "cc": "GB", "lat": 51.507, "lng": -0.128 }
+      ],
+      "docs": [
+        { "label": "Itinerary", "file": "trips/2026-02-geneva/itinerary.md" }
+      ]
+    },
+    {
+      "id": "2026-02-tromso",
+      "number": 6,
+      "title": "Tromsø",
+      "subtitle": "Chasing the Aurora",
+      "location": "Northern Norway",
+      "flags": "🇳🇴",
+      "dates": "25–28 February 2026",
+      "start": "2026-02-25",
+      "end": "2026-02-28",
+      "nights": 3,
+      "status": "Logged",
+      "past": true,
+      "memory": "Above the Arctic Circle in deep winter: fjords, huskies, and the northern lights overhead.",
+      "color": "#35876b",
+      "cities": [
+        { "name": "London", "cc": "GB", "lat": 51.507, "lng": -0.128 },
+        { "name": "Tromsø", "cc": "NO", "lat": 69.649, "lng": 18.956 }
+      ],
+      "docs": [
+        { "label": "Itinerary", "file": "trips/2026-02-tromso/itinerary.md" }
+      ]
+    },
+    {
+      "id": "2026-03-houston",
+      "number": 7,
+      "title": "Houston",
+      "subtitle": "Space City in the Spring",
+      "location": "Texas, USA",
+      "flags": "🇺🇸",
+      "dates": "5–8 March 2026",
+      "start": "2026-03-05",
+      "end": "2026-03-08",
+      "nights": 3,
+      "status": "Logged",
+      "past": true,
+      "memory": "A Texan interlude: barbecue, big skies, and the long haul across the Atlantic.",
+      "color": "#274c77",
+      "cities": [
+        { "name": "London", "cc": "GB", "lat": 51.507, "lng": -0.128 },
+        { "name": "Houston", "cc": "US", "lat": 29.760, "lng": -95.370 }
+      ],
+      "docs": [
+        { "label": "Itinerary", "file": "trips/2026-03-houston/itinerary.md" }
+      ]
+    },
+    {
+      "id": "2026-05-lisbon",
+      "number": 8,
+      "title": "Lisbon",
+      "subtitle": "Hills, Tiles & Pastéis",
+      "location": "Portugal",
+      "flags": "🇵🇹",
+      "dates": "14–16 May 2026",
+      "start": "2026-05-14",
+      "end": "2026-05-16",
+      "nights": 2,
+      "status": "Logged",
+      "past": true,
+      "memory": "Two days of miradouros, azulejos, tram bells, and warm custard tarts by the dozen.",
+      "color": "#2456a6",
+      "cities": [
+        { "name": "London", "cc": "GB", "lat": 51.507, "lng": -0.128 },
+        { "name": "Lisbon", "cc": "PT", "lat": 38.722, "lng": -9.139 }
+      ],
+      "docs": [
+        { "label": "Itinerary", "file": "trips/2026-05-lisbon/itinerary.md" }
+      ]
     }
-  ],
-  "credits": [
-    { "label": "Prague panorama", "by": "Diliff", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Prague_Panorama_-_Oct_2010.jpg" },
-    { "label": "Prague, from Charles Bridge", "by": "Pudelek (Marcin Szala)", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Prague_-_view_from_Charles_Bridge_(by_Pudelek).jpg" },
-    { "label": "Budapest Parliament at night", "by": "Florian Fèvre", "lic": "CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Danube_and_Hungarian_Parliament_Building_by_night.jpg" },
-    { "label": "San Sebastián bay", "by": "Phillip Maiwald (Nikopol)", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:San_Sebastian_Bay_Panorama.jpg" },
-    { "label": "San Sebastián panorama", "by": "Mario Roberto Durán Ortiz", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:San_Sebastian_06_2012_Panorama_2501.jpg" },
-    { "label": "Brandenburg Gate at dusk", "by": "SDKmac", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Juni_2015_Brandenburg_Gate_Berlin_Germany_Evening.jpg" },
-    { "label": "Berlin skyline from the Reichstag", "by": "Tanweer Morshed", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Berlin_skyline_from_Reichstag_dome.JPG" },
-    { "label": "Vienna from the Belvedere", "by": "MrPanyGoff", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Panorama_from_Belvedere_-_Vienna.jpg" }
   ]
 }
