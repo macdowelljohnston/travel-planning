@@ -1,0 +1,73 @@
+# Budapest → Berlin 🚆
+
+*The overland tag-on: a full day in Vienna, a sleeper car north, and you wake up in Berlin.*
+
+**Plan locked:** Plan B (a night in Vienna, then the night train).
+**Vienna stay:** ✅ Booked, 31 Aug, $120.
+**The shape:** Train to Vienna on the 31st, a full Vienna day on the 1st, the overnight sleeper into Berlin, then 2 nights with your friend before flying home to London.
+
+---
+
+## Fixed points (the "bones")
+
+| When | What | Status |
+|------|------|--------|
+| Mon 31 Aug, 09:40 → 12:20 | Railjet Budapest-Keleti → Wien Hbf | 🎯 To book |
+| Mon 31 Aug | Vienna, 1 night | ✅ Booked ($120) |
+| Tue 1 Sep, 22:02 → 07:33 | Nightjet NJ456 Wien Hbf → Berlin Hbf | 🎯 To book |
+| 2–3 Sep | Berlin, 2 nights with your friend | ✅ Locked |
+| Fri 4 Sep | Fly Berlin → London | ⏳ To book |
+
+---
+
+### Day 1 · Mon 31 Aug · Budapest → Vienna
+> A short hop north, then a first evening in the imperial capital with nowhere to rush to.
+
+- 🚆 **09:40: Railjet from Budapest-Keleti → Wien Hauptbahnhof, arriving 12:20.** About 2h40, running hourly at :40 past, with a restaurant car and draught beer on board. (Relaxed alternative: the 11:40 → 14:20.)
+- 🛏️ **Check into your Vienna hotel** (booked, $120), drop the bags.
+- 🍴 **Late lunch** near the centre, then ease in.
+- 🍸 **First evening in Vienna.** A stroll past a floodlit **Stephansdom**, dinner, and a glowing glass of Grüner Veltliner. No train to catch tonight.
+
+> ⭐ **The Move:** an unhurried first night. This is exactly what you booked the Vienna room for: the city without a clock running.
+
+### Day 2 · Tue 1 Sep · Vienna, then the night train
+> A full day in one of Europe's most beautiful cities, capped by boarding the sleeper to Berlin.
+
+- ☕ **Slow morning.** Coffee and cake at **Café Central**, the grand old literary café.
+- 👀 **One palace, done well.** **Schönbrunn** (gardens and the Gloriette view) or the **Belvedere** (Klimt's "The Kiss"). Then the **Ringstrasse** and the **Hofburg**.
+- 🍴 **Lunch at the Naschmarkt**, or a schnitzel at **Figlmüller**.
+- 🛍️ **Afternoon at leisure:** the **MuseumsQuartier** courtyards, or a long walk and one more Kaffeehaus.
+- 🚕 **Luggage:** check out in the morning and leave bags at the hotel or in Wien Hbf lockers for the day. Early dinner near the station.
+- 🚆 **22:02: Nightjet NJ456, Wien Hbf → Berlin Hbf, arriving 07:33.** Daily, about 9.5 hours.
+- 🛏️ **Sleep on rails.** Book a **sleeper** (bed from ~€89, breakfast included) over a seat. A private cabin (from ~€159) is the comfort splurge for a solo traveller.
+
+> 🎯 **Book it:** the Nightjet sleeper is the one thing on this trip that genuinely sells out. Lock it now (see the booking box below).
+
+### Day 3 · Wed 2 Sep · Arrive Berlin
+> You wake up pulling into Berlin Hbf, meet your friend, and the tag-on proper begins.
+
+- 🚆 **~07:33: arrive Berlin Hauptbahnhof**, central and slick.
+- 🛏️ **Meet your friend, check in, reset.** Berlin night 1.
+- 👀 *(Berlin activities to be planned separately.)*
+
+### Day 4 · Thu 3 Sep · Berlin
+> A full day in the city with your friend. Berlin night 2.
+
+- 👀 *(To be planned separately.)*
+
+### Day 5 · Fri 4 Sep · Fly home
+> One short flight and you are back in London, inside your deadline with a day to spare.
+
+- ✈️ **Berlin (BER) → London**, about 1h55. Frequent flights on BA, easyJet, Ryanair, Lufthansa to LHR / LGW / STN.
+
+---
+
+## 🎟️ Book these trains
+- [ ] **Leg 1, Budapest → Vienna (31 Aug, 09:40):** Railjet RJX. Book on **mavcsoport.hu** (Hungarian Railways, often cheapest at ~€13, opens 90 days ahead) or **oebb.at** / **thetrainline.com** (~€19.90). Advance Sparschiene fares are fixed to that train and non-refundable.
+- [ ] **Leg 2, Vienna → Berlin (1 Sep, 22:02 Nightjet NJ456):** Book on **nightjet.com** / **oebb.at** or **bahn.de** (Deutsche Bahn). Choose a **sleeper** (~€89) or **private cabin** (~€159+). Bookable up to 6 months ahead; book early for both price and availability.
+- [ ] **Return, Berlin → London (4 Sep):** compare BA / easyJet / Ryanair / Lufthansa once the plan is final.
+
+## Notes
+- Fares and times are 2026; confirm exact minutes on the ÖBB site when you book.
+- Sleeping arrangements: 1 Vienna hotel night (booked), 1 night on the sleeper, 2 hotel nights in Berlin.
+- This tag-on replaces your 31 Aug flight home in the Prague + Budapest plan. The group itinerary is unchanged for the other 7.
