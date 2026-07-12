@@ -49,13 +49,13 @@
       "location": "Central Europe by rail",
       "emoji": "",
       "flags": "🇭🇺 🇦🇹 🇩🇪",
-      "dates": "31 Aug – 3 Sep 2026",
-      "nights": 3,
-      "status": "Planning",
+      "dates": "31 Aug – 4 Sep 2026",
+      "status": "Comparing options",
       "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Juni_2015_Brandenburg_Gate_Berlin_Germany_Evening.jpg/1920px-Juni_2015_Brandenburg_Gate_Berlin_Germany_Evening.jpg",
       "hero": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Berlin_skyline_from_Reichstag_dome.JPG/1920px-Berlin_skyline_from_Reichstag_dome.JPG",
       "docs": [
-        { "label": "Itinerary", "file": "trips/2026-08-budapest-berlin/itinerary.md" }
+        { "label": "Plan A · Vienna Day", "file": "trips/2026-08-budapest-berlin/plan-a-vienna-day.md" },
+        { "label": "Plan B · Vienna Night", "file": "trips/2026-08-budapest-berlin/plan-b-vienna-night.md" }
       ]
     }
   ],
