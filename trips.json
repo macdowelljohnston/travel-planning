@@ -41,6 +41,22 @@
         { "label": "Itinerary", "file": "trips/2026-08-prague-budapest/itinerary.md" },
         { "label": "Budget", "file": "trips/2026-08-prague-budapest/budget.md" }
       ]
+    },
+    {
+      "id": "2026-08-budapest-berlin",
+      "title": "Budapest → Berlin",
+      "subtitle": "The Overland Tag-On",
+      "location": "Central Europe by rail",
+      "emoji": "",
+      "flags": "🇭🇺 🇦🇹 🇩🇪",
+      "dates": "31 Aug – 3 Sep 2026",
+      "nights": 3,
+      "status": "Planning",
+      "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Juni_2015_Brandenburg_Gate_Berlin_Germany_Evening.jpg/1920px-Juni_2015_Brandenburg_Gate_Berlin_Germany_Evening.jpg",
+      "hero": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Berlin_skyline_from_Reichstag_dome.JPG/1920px-Berlin_skyline_from_Reichstag_dome.JPG",
+      "docs": [
+        { "label": "Itinerary", "file": "trips/2026-08-budapest-berlin/itinerary.md" }
+      ]
     }
   ],
   "credits": [
@@ -48,6 +64,8 @@
     { "label": "Prague, from Charles Bridge", "by": "Pudelek (Marcin Szala)", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Prague_-_view_from_Charles_Bridge_(by_Pudelek).jpg" },
     { "label": "Budapest Parliament at night", "by": "Florian Fèvre", "lic": "CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Danube_and_Hungarian_Parliament_Building_by_night.jpg" },
     { "label": "San Sebastián bay", "by": "Phillip Maiwald (Nikopol)", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:San_Sebastian_Bay_Panorama.jpg" },
-    { "label": "San Sebastián panorama", "by": "Mario Roberto Durán Ortiz", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:San_Sebastian_06_2012_Panorama_2501.jpg" }
+    { "label": "San Sebastián panorama", "by": "Mario Roberto Durán Ortiz", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:San_Sebastian_06_2012_Panorama_2501.jpg" },
+    { "label": "Brandenburg Gate at dusk", "by": "SDKmac", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Juni_2015_Brandenburg_Gate_Berlin_Germany_Evening.jpg" },
+    { "label": "Berlin skyline from the Reichstag", "by": "Tanweer Morshed", "lic": "CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Berlin_skyline_from_Reichstag_dome.JPG" }
   ]
 }
