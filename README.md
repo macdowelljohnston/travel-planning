@@ -46,6 +46,13 @@ trip's markdown files. That's the only wiring step.
 ⚠️ A Pages site from a *private* repo is **publicly accessible** unless you're on a paid
 plan with private Pages.
 
+## ✍️ Itinerary writing style
+
+Every itinerary follows the house style in
+[`.claude/skills/itinerary-style/SKILL.md`](.claude/skills/itinerary-style/SKILL.md): an evocative
+"polished hype" voice, category icons, a why-line for every stop, one ⭐ **The Move** per day, and
+callouts (⭐ 💡 ⚠️ 🎯) that render as styled cards on the site. Use it for any new trip.
+
 ## Templates available
 
 - [`templates/itinerary.md`](templates/itinerary.md): day-by-day itinerary
