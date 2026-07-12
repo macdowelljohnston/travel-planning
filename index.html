@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Itinerary · Travel Planning</title>
   <meta name="description" content="Private travel itineraries, composed with care." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%88%EF%B8%8F%3C/text%3E%3C/svg%3E" />
+  <meta name="theme-color" content="#f4efe6" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#100e0a" media="(prefers-color-scheme: dark)" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -329,6 +332,98 @@
     .city-label.sub { fill: var(--text-faint); font-weight: 500; }
     @media (prefers-color-scheme: dark) { .city-label { fill: var(--ink); } }
 
+    /* ---------- Delight layer ---------- */
+    body { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
+
+    /* page transitions */
+    #app { transition: opacity .22s ease, transform .22s ease; }
+    #app.out { opacity: 0; transform: translateY(12px); }
+
+    /* reading progress bar (reader view only) */
+    #readbar { position: fixed; top: 0; left: 0; height: 2.5px; width: 0; z-index: 300; background: linear-gradient(90deg, var(--gold), var(--gold-bright)); display: none; }
+    body[data-view="reader"] #readbar { display: block; }
+
+    /* cursor glow (desktop pointers only) */
+    .glow { position: fixed; top: 0; left: 0; width: 26px; height: 26px; border-radius: 50%; pointer-events: none; z-index: 9997; border: 1.5px solid color-mix(in srgb, var(--gold) 75%, transparent); transform: translate(-50%, -50%); transition: width .25s ease, height .25s ease, opacity .35s ease; opacity: 0; }
+    .glow.on { opacity: .75; }
+    .glow.big { width: 48px; height: 48px; opacity: .95; }
+
+    /* hero Ken Burns + parallax */
+    @keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.09); } }
+    .hero-img, .r-hero img { animation: kenburns 28s ease-in-out infinite alternate; will-change: transform; }
+    .hero-inner { will-change: transform, opacity; }
+    .countdown { cursor: pointer; }
+
+    /* 3D card tilt + light sheen (desktop) */
+    @media (pointer: fine) {
+      .grid { perspective: 1200px; }
+      .card { transform-style: preserve-3d; }
+      .card-media::before { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0; transition: opacity .35s ease; background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 45%), rgba(255,255,255,.16), transparent 55%); }
+      .card:hover .card-media::before { opacity: 1; }
+    }
+    @media (pointer: coarse) {
+      .card:active { transform: scale(.983); transition: transform .12s ease; }
+      .navbtn:active, .tab:active { transform: scale(.95); }
+    }
+
+    /* atlas interactivity */
+    .atlas-map svg:has(.route:hover) .route:not(:hover) { opacity: .22; }
+    .route:hover { stroke-width: 4; cursor: pointer; }
+    .atlas-tip { position: absolute; z-index: 6; transform: translate(-50%, -130%); background: var(--ink); color: var(--bg); font: 600 12px var(--sans); letter-spacing: .03em; padding: 6px 11px; border-radius: 6px; pointer-events: none; opacity: 0; transition: opacity .15s ease; white-space: nowrap; }
+    .atlas-tip.on { opacity: 1; }
+    .atlas-plane { fill: var(--gold); font-size: 19px; pointer-events: none; }
+
+    /* paper plane flight */
+    .pplane { position: fixed; top: 0; left: 0; z-index: 9998; font-size: 34px; pointer-events: none; filter: drop-shadow(0 4px 10px rgba(0,0,0,.25)); }
+
+    /* boarding pass */
+    .bp-overlay { position: fixed; inset: 0; z-index: 10001; background: rgba(12,10,6,.55); backdrop-filter: blur(7px); display: grid; place-items: center; padding: 20px; opacity: 0; transition: opacity .25s ease; }
+    .bp-overlay.in { opacity: 1; } .bp-overlay.bye { opacity: 0; }
+    .bp { position: relative; width: min(430px, 94vw); background: #faf6ec; color: #211d16; border-radius: 14px; box-shadow: 0 40px 90px -20px rgba(0,0,0,.65); transform: rotate(-5deg) scale(.82); transition: transform .4s cubic-bezier(.2, 1.45, .35, 1); }
+    .bp-overlay.in .bp { transform: rotate(-1.5deg) scale(1); }
+    .bp-x { position: absolute; top: 10px; right: 12px; border: 0; background: none; font-size: 14px; color: #8a8064; cursor: pointer; z-index: 2; padding: 4px; }
+    .bp-head { display: flex; justify-content: space-between; align-items: center; padding: 14px 22px; border-bottom: 1px solid #e5dcc6; }
+    .bp-head span:first-child { font-family: var(--serif); font-size: 17px; font-weight: 600; color: #9a7b3c; letter-spacing: .04em; }
+    .bp-head span:last-child { font-size: 9.5px; letter-spacing: .3em; text-transform: uppercase; color: #8a8064; font-weight: 600; }
+    .bp-main { padding: 20px 22px 10px; }
+    .bp-route { display: flex; align-items: center; gap: 14px; justify-content: space-between; }
+    .bp-city { font-family: var(--serif); font-weight: 600; font-size: 23px; letter-spacing: .01em; }
+    .bp-plane { color: #9a7b3c; font-size: 17px; flex: 1; text-align: center; position: relative; min-width: 70px; }
+    .bp-plane::before, .bp-plane::after { content: ""; position: absolute; top: 50%; width: 32%; border-top: 1.5px dashed #cbbfa0; }
+    .bp-plane::before { left: 0; } .bp-plane::after { right: 0; }
+    .bp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px 18px; margin-top: 20px; }
+    .bp-lab { display: block; font-size: 8.5px; letter-spacing: .24em; text-transform: uppercase; color: #8a8064; font-weight: 600; }
+    .bp-val { display: block; font-weight: 600; font-size: 13.5px; margin-top: 3px; font-family: var(--sans); }
+    .bp-tear { position: relative; border-top: 2px dashed #d8cdb2; margin-top: 16px; }
+    .bp-tear::before, .bp-tear::after { content: ""; position: absolute; top: -12px; width: 24px; height: 24px; border-radius: 50%; background: #151109; }
+    .bp-tear::before { left: -12px; } .bp-tear::after { right: -12px; }
+    .bp-stub { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 22px 18px; }
+    .bp-code { height: 34px; flex: 1; background: repeating-linear-gradient(90deg, #211d16 0 2px, transparent 2px 5px, #211d16 5px 6px, transparent 6px 10px); }
+    .bp-tiny { font-size: 8.5px; letter-spacing: .16em; text-transform: uppercase; color: #8a8064; max-width: 42%; text-align: right; line-height: 1.6; }
+
+    /* command palette */
+    .pal-overlay { position: fixed; inset: 0; z-index: 10000; background: rgba(10,8,5,.45); backdrop-filter: blur(8px); display: flex; align-items: flex-start; justify-content: center; padding: 14vh 20px 0; opacity: 0; transition: opacity .2s ease; }
+    .pal-overlay.in { opacity: 1; }
+    .pal { width: min(540px, 100%); background: var(--bg-elev); border: 1px solid var(--line-strong); border-radius: 14px; box-shadow: var(--shadow-lg); overflow: hidden; transform: translateY(-10px); transition: transform .2s ease; }
+    .pal-overlay.in .pal { transform: none; }
+    .pal input { width: 100%; border: 0; background: transparent; outline: none; color: var(--ink); font: 15px var(--sans); padding: 16px 18px; border-bottom: 1px solid var(--line); }
+    .pal-list { max-height: 46vh; overflow: auto; padding: 6px; }
+    .pal-item { display: block; width: 100%; text-align: left; padding: 11px 14px; border-radius: 8px; font: 14px var(--sans); color: var(--text); cursor: pointer; background: none; border: 0; }
+    .pal-item.active, .pal-item:hover { background: color-mix(in srgb, var(--gold) 12%, transparent); color: var(--ink); }
+    .pal-hint { padding: 9px 16px; font-size: 9.5px; color: var(--text-faint); letter-spacing: .14em; text-transform: uppercase; border-top: 1px solid var(--line); }
+    .palbtn { display: none; }
+    @media (pointer: fine) and (min-width: 561px) { .palbtn { display: inline-flex; } }
+
+    /* footer clock */
+    .foot-clock { margin-top: 16px; font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--text-faint); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-img, .r-hero img { animation: none; }
+      #app, #app.out { transition: none; opacity: 1; transform: none; }
+      .glow { display: none; }
+    }
+
     @media (max-width: 860px) {
       .r-layout { grid-template-columns: minmax(0, 1fr); gap: 0; }
       .toc { display: none; }
@@ -383,6 +478,7 @@
     <div class="side left" id="topLeft"></div>
     <div class="wordmark" id="wordmark">The Itinerary</div>
     <div class="side right">
+      <button class="navbtn palbtn" id="palBtn" title="Quick jump (Ctrl+K)" aria-label="Open quick jump">⌘K</button>
       <button class="navbtn icon" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">☾</button>
     </div>
   </header>
@@ -417,20 +513,27 @@
     const slug = s => s.toLowerCase().replace(/[^\w\s-]/g,'').trim().replace(/\s+/g,'-');
     const tripById = id => DATA.trips.find(t => t.id === id);
 
+    const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const FINE = matchMedia('(pointer: fine)').matches;
+
     // days until an ISO date (from local midnight)
     function daysUntil(iso) {
       const now = new Date(); now.setHours(0,0,0,0);
       return Math.round((new Date(iso + 'T00:00:00') - now) / 86400000);
     }
-    // hero line for the soonest upcoming trip
-    function nextTripLine() {
+    // the soonest upcoming trip
+    function nextTrip() {
       const up = (DATA.trips || []).filter(t => t.start)
         .map(t => ({ t, d: daysUntil(t.start) }))
         .filter(x => x.d >= 0).sort((a,b) => a.d - b.d);
-      if (!up.length) return '';
-      const { t, d } = up[0];
+      return up[0] || null;
+    }
+    function nextTripLine() {
+      const up = nextTrip();
+      if (!up) return '';
+      const { t, d } = up;
       const when = d === 0 ? 'today' : d === 1 ? 'tomorrow' : `in ${d} days`;
-      return `<div class="countdown">Next journey&nbsp; <strong>${esc(t.title)}</strong>&nbsp; ${when}</div>`;
+      return `<div class="countdown" title="Tap for your boarding pass" role="button" tabindex="0">Next journey&nbsp; <strong>${esc(t.title)}</strong>&nbsp; ${when}</div>`;
     }
 
     // ---- easter eggs ----
@@ -469,7 +572,135 @@
       });
     })();
     // a little hello for the curious
-    try { console.log('%c✈ The Itinerary — you found the console. Try the Konami code: ↑ ↑ ↓ ↓ ← → ← → B A', 'font-size:13px;color:#cba25c'); } catch (e) {}
+    try { console.log('%c✈ The Itinerary — you found the console. Try the Konami code: ↑ ↑ ↓ ↓ ← → ← → B A%c\nAlso: click the countdown. Double-click the wordmark. Press Ctrl/⌘+K.', 'font-size:13px;color:#cba25c', 'font-size:11px;color:#8a8064'); } catch (e) {}
+
+    /* ---- boarding pass (click the countdown) ---- */
+    function openBoardingPass() {
+      if (document.querySelector('.bp-overlay')) return;
+      const up = nextTrip();
+      if (!up) { toast('No upcoming journeys on file'); return; }
+      const t = up.t, cs = t.cities || [];
+      const from = (cs[0]?.name || 'London').toUpperCase();
+      const to = (cs[cs.length-1]?.name || t.title).toUpperCase();
+      const ov = document.createElement('div');
+      ov.className = 'bp-overlay';
+      ov.innerHTML = `<div class="bp" role="dialog" aria-label="Boarding pass">
+        <button class="bp-x" aria-label="Close">✕</button>
+        <div class="bp-head"><span>The Itinerary</span><span>Boarding Pass</span></div>
+        <div class="bp-main">
+          <div class="bp-route"><div class="bp-city">${esc(from)}</div><div class="bp-plane">✈</div><div class="bp-city">${esc(to)}</div></div>
+          <div class="bp-grid">
+            <div><span class="bp-lab">Passenger</span><span class="bp-val">M. JOHNSTON</span></div>
+            <div><span class="bp-lab">Journey</span><span class="bp-val">${esc(t.title)}</span></div>
+            <div><span class="bp-lab">Dates</span><span class="bp-val">${esc(t.dates)}</span></div>
+            <div><span class="bp-lab">Boards in</span><span class="bp-val">${up.d === 0 ? 'TODAY' : up.d + ' day' + (up.d === 1 ? '' : 's')}</span></div>
+            <div><span class="bp-lab">Seat</span><span class="bp-val">1A</span></div>
+            <div><span class="bp-lab">Gate</span><span class="bp-val">${esc(t.flags || '✈')}</span></div>
+          </div>
+        </div>
+        <div class="bp-tear"></div>
+        <div class="bp-stub"><div class="bp-code"></div><span class="bp-tiny">Issued with love<br>Valid for one adventure</span></div>
+      </div>`;
+      document.body.appendChild(ov);
+      const close = () => { ov.classList.remove('in'); ov.classList.add('bye'); setTimeout(() => ov.remove(), 260); };
+      ov.addEventListener('click', e => { if (e.target === ov || e.target.closest('.bp-x')) close(); });
+      window.addEventListener('keydown', function onEsc(e) { if (e.key === 'Escape') { close(); window.removeEventListener('keydown', onEsc); } });
+      requestAnimationFrame(() => ov.classList.add('in'));
+    }
+    document.addEventListener('click', e => { if (e.target.closest('.countdown')) openBoardingPass(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.classList?.contains('countdown')) openBoardingPass(); });
+
+    /* ---- paper plane (double-click the wordmark) ---- */
+    function paperPlane() {
+      if (REDUCED) return;
+      const p = document.createElement('div');
+      p.className = 'pplane'; p.textContent = '✈️';
+      document.body.appendChild(p);
+      const h = innerHeight * 0.3 + Math.random() * innerHeight * 0.35;
+      p.animate([
+        { transform: `translate(-70px, ${h}px) rotate(10deg)` },
+        { transform: `translate(${innerWidth * 0.45}px, ${h - 110}px) rotate(-8deg)` },
+        { transform: `translate(${innerWidth + 90}px, ${h - 30}px) rotate(6deg)` }
+      ], { duration: 2300, easing: 'cubic-bezier(.45,.15,.35,1)' }).onfinish = () => p.remove();
+      toast('Bon voyage ✈️');
+    }
+
+    /* ---- command palette (Ctrl/⌘+K) ---- */
+    function openPalette() {
+      if (!DATA || document.querySelector('.pal-overlay')) return;
+      const items = [{ l: '🏠  Home', f: () => location.hash = '#/' }]
+        .concat((DATA.trips || []).map(t => ({ l: `${t.flags || '✈'}  ${t.title} · ${t.dates}`, f: () => location.hash = '#/trip/' + t.id })))
+        .concat([
+          { l: '🎫  Boarding pass', f: openBoardingPass },
+          { l: curTheme() === 'dark' ? '☀  Switch to light' : '☾  Switch to dark', f: () => applyTheme(curTheme() === 'dark' ? 'light' : 'dark') },
+          { l: '🎉  Surprise me', f: () => { travelConfetti(); toast('✈️ First class unlocked'); } }
+        ]);
+      const ov = document.createElement('div');
+      ov.className = 'pal-overlay';
+      ov.innerHTML = `<div class="pal" role="dialog" aria-label="Quick jump">
+        <input placeholder="Where to?" aria-label="Search" />
+        <div class="pal-list"></div>
+        <div class="pal-hint">↑↓ navigate · Enter select · Esc close</div>
+      </div>`;
+      document.body.appendChild(ov);
+      const input = ov.querySelector('input'), list = ov.querySelector('.pal-list');
+      let filtered = items, active = 0;
+      const close = () => { ov.classList.remove('in'); setTimeout(() => ov.remove(), 200); };
+      function paint() {
+        list.innerHTML = filtered.map((it, i) => `<button class="pal-item ${i === active ? 'active' : ''}" data-i="${i}">${esc(it.l)}</button>`).join('') || '<div class="pal-item">Nothing found</div>';
+      }
+      input.addEventListener('input', () => { const q = input.value.toLowerCase(); filtered = items.filter(it => it.l.toLowerCase().includes(q)); active = 0; paint(); });
+      input.addEventListener('keydown', e => {
+        if (e.key === 'ArrowDown') { e.preventDefault(); active = Math.min(active + 1, filtered.length - 1); paint(); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); active = Math.max(active - 1, 0); paint(); }
+        else if (e.key === 'Enter' && filtered[active]) { close(); filtered[active].f(); }
+        else if (e.key === 'Escape') close();
+      });
+      list.addEventListener('click', e => { const b = e.target.closest('.pal-item[data-i]'); if (b) { close(); filtered[+b.dataset.i].f(); } });
+      ov.addEventListener('click', e => { if (e.target === ov) close(); });
+      paint();
+      requestAnimationFrame(() => { ov.classList.add('in'); input.focus(); });
+    }
+    window.addEventListener('keydown', e => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openPalette(); }
+      if (e.key === '/' && document.body.dataset.view !== 'reader' && !e.target.closest('input, textarea')) {
+        e.preventDefault(); document.getElementById('searchInput')?.focus();
+      }
+    });
+
+    /* ---- cursor glow (desktop) ---- */
+    if (FINE && !REDUCED) {
+      const g = document.createElement('div'); g.className = 'glow'; document.body.appendChild(g);
+      let x = innerWidth / 2, y = innerHeight / 2, tx = x, ty = y;
+      addEventListener('pointermove', e => {
+        tx = e.clientX; ty = e.clientY; g.classList.add('on');
+        const el = e.target instanceof Element ? e.target : null;
+        g.classList.toggle('big', !!(el && el.closest('a, button, .card, .tab, .toc a, .countdown, .route')));
+      });
+      addEventListener('pointerleave', () => g.classList.remove('on'));
+      (function follow() { x += (tx - x) * .16; y += (ty - y) * .16; g.style.left = x + 'px'; g.style.top = y + 'px'; requestAnimationFrame(follow); })();
+    }
+
+    /* ---- 3D card tilt ---- */
+    function attachTilt() {
+      if (!FINE || REDUCED) return;
+      document.querySelectorAll('.card').forEach(c => {
+        c.addEventListener('pointermove', e => {
+          const r = c.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+          c.style.transform = `translateY(-6px) rotateX(${((0.5 - py) * 5).toFixed(2)}deg) rotateY(${((px - 0.5) * 7).toFixed(2)}deg)`;
+          c.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+          c.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+        });
+        c.addEventListener('pointerleave', () => { c.style.transform = ''; });
+      });
+    }
+
+    /* ---- footer clock ---- */
+    function tickClock() {
+      const el = document.getElementById('footClock');
+      if (el) el.textContent = 'Composed in London · ' + new Date().toLocaleTimeString('en-GB', { timeZone: 'Europe/London', hour: '2-digit', minute: '2-digit' }) + ' ✈';
+    }
 
     /* ---- Passport stats ---- */
     function haversineKm(a, b) {
@@ -553,7 +784,49 @@
       })(t0);
     }
     function initHomeAnimations() {
-      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const reduce = REDUCED;
+      // atlas: hover tooltips, click-through, and the little plane
+      const svg = document.querySelector('.atlas-map svg');
+      if (svg && !svg.dataset.wired) {
+        svg.dataset.wired = '1';
+        const mapBox = svg.closest('.atlas-map');
+        const tip = document.createElement('div'); tip.className = 'atlas-tip'; mapBox.appendChild(tip);
+        svg.querySelectorAll('.route').forEach(r => {
+          const t = DATA.trips[+r.dataset.trip]; if (!t) return;
+          r.addEventListener('pointermove', e => {
+            const rect = mapBox.getBoundingClientRect();
+            tip.textContent = `${t.title} · ${t.dates}`;
+            tip.style.left = (e.clientX - rect.left) + 'px';
+            tip.style.top = (e.clientY - rect.top) + 'px';
+            tip.classList.add('on');
+          });
+          r.addEventListener('pointerleave', () => tip.classList.remove('on'));
+          r.addEventListener('click', () => { location.hash = '#/trip/' + t.id; });
+        });
+        if (!reduce) {
+          const paths = [...svg.querySelectorAll('.route')].filter(p => p.getTotalLength() > 4);
+          if (paths.length) {
+            const plane = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            plane.textContent = '✈'; plane.setAttribute('class', 'atlas-plane');
+            svg.appendChild(plane);
+            let pi = 0, t0 = performance.now();
+            cancelAnimationFrame(window._planeRAF || 0);
+            (function fly(now) {
+              const path = paths[pi % paths.length];
+              if (!path.isConnected) return; // page changed
+              const L = path.getTotalLength(), D = 6500;
+              let p = (now - t0) / D;
+              if (p >= 1) { pi++; t0 = now; p = 0; }
+              const pt = path.getPointAtLength(p * L);
+              const pt2 = path.getPointAtLength(Math.min(L, p * L + 2));
+              const ang = Math.atan2(pt2.y - pt.y, pt2.x - pt.x) * 180 / Math.PI;
+              plane.setAttribute('x', pt.x); plane.setAttribute('y', pt.y);
+              plane.setAttribute('transform', `rotate(${ang.toFixed(1)} ${pt.x.toFixed(1)} ${pt.y.toFixed(1)})`);
+              window._planeRAF = requestAnimationFrame(fly);
+            })(t0);
+          }
+        }
+      }
       const nums = document.querySelectorAll('.num[data-count]');
       const routes = [...document.querySelectorAll('.atlas-map .route')];
       if (window._atlasDone || reduce) {
@@ -585,7 +858,23 @@
       io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
       document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     }
-    function onScroll() { topbar.classList.toggle('solid', window.scrollY > (window._heroH || 300) - 90); }
+    function onScroll() {
+      topbar.classList.toggle('solid', window.scrollY > (window._heroH || 300) - 90);
+      // reading progress
+      const rb = document.getElementById('readbar');
+      if (rb && document.body.dataset.view === 'reader') {
+        const h = document.documentElement, total = h.scrollHeight - h.clientHeight;
+        rb.style.width = (total > 0 ? (window.scrollY / total * 100) : 0) + '%';
+      }
+      // hero text parallax + fade
+      if (!REDUCED) {
+        const hi = document.querySelector('.hero-inner');
+        if (hi) {
+          hi.style.transform = `translateY(${Math.min(window.scrollY * 0.18, 130)}px)`;
+          hi.style.opacity = Math.max(0, 1 - window.scrollY / ((window._heroH || 600) * 0.85));
+        }
+      }
+    }
     window.addEventListener('scroll', onScroll, { passive: true });
 
     /* Footer */
@@ -597,7 +886,9 @@
           <div class="foot-mark">${esc(DATA.site?.wordmark || 'The Itinerary')}</div>
           <div class="foot-tag">${esc(DATA.site?.tagline || '')}</div>
           ${cr ? `<div class="credits"><span class="ct">Photography</span>${cr}</div>` : ''}
+          <div class="foot-clock" id="footClock"></div>
         </div>`;
+      tickClock();
     }
 
     /* HOME */
@@ -662,6 +953,7 @@
       if (filter) { si.focus(); si.setSelectionRange(si.value.length, si.value.length); }
       setupReveal();
       initHomeAnimations();
+      attachTilt();
     }
 
     /* READER */
@@ -754,16 +1046,27 @@
       window.scrollTo(0,0);
     }
 
-    /* Router */
-    function route() {
+    /* Router (with page transitions) */
+    function doRoute() {
+      cancelAnimationFrame(window._planeRAF || 0);
       const parts = location.hash.replace(/^#\/?/,'').split('/').filter(Boolean);
-      if (parts[0]==='trip' && parts[1]) renderTrip(parts[1], parseInt(parts[2]||'0',10));
-      else renderHome();
+      if (parts[0]==='trip' && parts[1]) { document.body.dataset.view = 'reader'; renderTrip(parts[1], parseInt(parts[2]||'0',10)); }
+      else { document.body.dataset.view = 'home'; renderHome(); }
+    }
+    let _routedOnce = false;
+    function route() {
+      if (!_routedOnce || REDUCED) { _routedOnce = true; doRoute(); return; }
+      app.classList.add('out');
+      setTimeout(() => { doRoute(); requestAnimationFrame(() => app.classList.remove('out')); }, 210);
     }
     window.addEventListener('hashchange', route);
     wordmark.onclick = () => { location.hash = '#/'; };
+    wordmark.addEventListener('dblclick', paperPlane);
 
     (async function boot(){
+      const rb = document.createElement('div'); rb.id = 'readbar'; document.body.appendChild(rb);
+      document.getElementById('palBtn')?.addEventListener('click', openPalette);
+      setInterval(tickClock, 30000);
       try { DATA = await (await fetch('trips.json?v='+Date.now())).json(); }
       catch(e) { app.innerHTML = `<div class="empty">Couldn't load itineraries.</div>`; return; }
       renderFooter(); route();
