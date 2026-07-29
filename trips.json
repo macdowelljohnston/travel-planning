@@ -98,6 +98,27 @@
       ]
     },
     {
+      "id": "2026-09-london",
+      "number": 13,
+      "title": "London",
+      "subtitle": "Nick & Louise Come to Town",
+      "location": "London, England",
+      "flags": "🇬🇧",
+      "dates": "5–9 September 2026",
+      "start": "2026-09-05",
+      "end": "2026-09-09",
+      "nights": 4,
+      "travelers": 3,
+      "status": "Planning",
+      "color": "#8f2d56",
+      "cities": [
+        { "name": "London", "cc": "GB", "lat": 51.507, "lng": -0.128 }
+      ],
+      "docs": [
+        { "label": "Itinerary", "file": "trips/2026-09-london/itinerary.md" }
+      ]
+    },
+    {
       "id": "2025-09-mallorca",
       "number": 1,
       "title": "Mallorca",
