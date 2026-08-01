@@ -32,6 +32,17 @@ This repo doubles as a website for browsing itineraries. `index.html` is a self-
 app that renders the markdown trips into a clean, searchable UI (light/dark, table of
 contents, booking-checklist progress bars).
 
+It's plain HTML, CSS and JavaScript in one file, with no build step and no framework.
+`marked` from a CDN is the only dependency. Keep it that way when adding features.
+
+**Sorting.** The home page toolbar has a Sort menu next to the search box: chronological
+(the default), longest stay, A–Z by title, or dispatch number. The choice is remembered in
+`localStorage` and re-labels the Archive heading to match.
+
+**Masthead ink trails.** The cursor drags a soft brass ribbon across the masthead, drawn on
+a canvas behind the type. It's skipped entirely on touch devices and when the reader prefers
+reduced motion.
+
 **Run it locally:**
 ```
 python -m http.server 8000

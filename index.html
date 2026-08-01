@@ -114,7 +114,7 @@
     body[data-view="reader"] #readbar { display: block; }
 
     /* ---------- Masthead (home) ---------- */
-    .masthead { max-width: var(--maxw); margin: 0 auto; padding: 118px 26px 34px; text-align: center; }
+    .masthead { position: relative; isolation: isolate; max-width: var(--maxw); margin: 0 auto; padding: 118px 26px 34px; text-align: center; }
     .masthead .rule2 { max-width: 720px; margin: 0 auto; }
     .masthead h1 {
       font-family: var(--serif); font-weight: 700; letter-spacing: .045em; text-transform: uppercase;
@@ -149,7 +149,7 @@
     .sec-head .count { font-size: 11px; font-weight: 700; letter-spacing: .2em; color: var(--ink-faint); text-transform: uppercase; }
     .sec-head .right { margin-left: auto; font-size: 11px; font-weight: 700; letter-spacing: .2em; color: var(--brass); text-transform: uppercase; }
 
-    .toolbar { display: flex; justify-content: center; margin: 0 0 40px; }
+    .toolbar { display: flex; justify-content: center; align-items: flex-end; gap: 16px; margin: 0 0 40px; }
     .search {
       display: flex; align-items: center; gap: 10px; width: min(380px, 100%);
       border-bottom: 1.5px solid var(--line-strong); padding: 9px 4px;
@@ -158,6 +158,40 @@
     .search input { border: 0; background: transparent; outline: none; width: 100%; color: var(--ink); font-family: var(--sans); font-size: 14px; }
     .search input::placeholder { color: var(--ink-faint); }
     .search .mag { color: var(--brass); font-size: 12px; }
+
+    /* dropdown menu */
+    .dd { position: relative; flex: none; }
+    .dd-trigger { height: 36px; }
+    .dd-caret { font-size: 9px; display: inline-block; transition: transform .4s cubic-bezier(.2,.9,.3,1.4); }
+    .dd.open .dd-trigger { color: var(--brass); border-color: var(--brass); }
+    .dd.open .dd-caret { transform: rotate(180deg); }
+    .dd-panel {
+      position: absolute; z-index: 90; top: calc(100% + 9px); min-width: 226px; padding: 5px;
+      background: var(--paper-elev); border: 1px solid var(--line-strong); border-radius: 4px;
+      box-shadow: var(--shadow-lg); display: flex; flex-direction: column;
+      opacity: 0; transform: translateY(-6px) scale(.965); filter: blur(7px); pointer-events: none;
+      transition: opacity .18s ease, transform .3s cubic-bezier(.2,.9,.3,1.25), filter .22s ease;
+    }
+    .dd[data-align="right"] .dd-panel { right: 0; }
+    .dd[data-align="left"] .dd-panel { left: 0; }
+    .dd.open .dd-panel { opacity: 1; transform: none; filter: none; pointer-events: auto; }
+    .dd-item {
+      display: flex; align-items: center; gap: 11px; width: 100%; text-align: left; cursor: pointer;
+      padding: 10px 12px; border: 0; border-radius: 3px; background: none; color: var(--ink-soft);
+      font-family: var(--sans); font-size: 13px; font-weight: 500; line-height: 1.3;
+      opacity: 0; transform: translateX(7px) scale(.97);
+      transition: background .3s ease, color .3s ease;
+    }
+    .dd.open .dd-item { animation: ddIn .42s cubic-bezier(.2,.9,.3,1.15) forwards; animation-delay: calc(var(--i) * 55ms); }
+    .dd-item:hover, .dd-item:focus-visible { background: color-mix(in srgb, var(--brass) 15%, transparent); color: var(--ink); outline: none; }
+    .dd-item:active { transform: scale(.97); }
+    .dd-item[aria-checked="true"] { color: var(--ink); }
+    .dd-item .dd-ic { width: 15px; text-align: center; color: var(--brass); font-size: 12px; flex: none; }
+    .dd-item .dd-tick { margin-left: auto; color: var(--brass); font-size: 11px; }
+    @keyframes ddIn { to { opacity: 1; transform: none; } }
+
+    /* cursor ink trails (masthead) */
+    .ink-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 
     /* ---------- Dispatch cards ---------- */
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr)); gap: 26px; }
@@ -359,7 +393,9 @@
       * { animation: none !important; scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
       #app, #app.out { transition: none; opacity: 1; transform: none; }
-      .glow { display: none; }
+      .glow, .ink-canvas { display: none; }
+      .dd-item { opacity: 1; transform: none; }
+      .dd-panel { transition: none; filter: none; }
     }
 
     @media (max-width: 860px) {
@@ -375,6 +411,10 @@
       .stat + .stat::before { display: none; }
       .stat .num { font-size: 30px; }
       .sec-head { flex-wrap: wrap; gap: 8px 14px; }
+      .toolbar { flex-wrap: wrap; gap: 12px; }
+      .dd { width: 100%; }
+      .dd-trigger { width: 100%; justify-content: space-between; }
+      .dd-panel { left: 0; right: 0; min-width: 0; }
       .r-hero { padding: 104px 20px 34px; }
       .r-meta { gap: 3px 12px; font-size: 10.5px; }
       .r-layout { padding: 34px 20px 70px; }
@@ -801,6 +841,171 @@
       }
     }
 
+    /* dropdown menu (reusable) */
+    function closeDd(d) { d.classList.remove('open'); d.querySelector('.dd-trigger')?.setAttribute('aria-expanded', 'false'); }
+    document.addEventListener('click', e => {
+      document.querySelectorAll('.dd.open').forEach(d => { if (!d.contains(e.target)) closeDd(d); });
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Escape') return;
+      document.querySelectorAll('.dd.open').forEach(d => { closeDd(d); d.querySelector('.dd-trigger')?.focus(); });
+    });
+
+    function dropdownHTML(id, label, options, align = 'right') {
+      return `<div class="dd" id="${id}" data-align="${align}">
+          <button class="navbtn dd-trigger" aria-haspopup="menu" aria-expanded="false">
+            <span>${esc(label)}</span><span class="dd-caret">▼</span>
+          </button>
+          <div class="dd-panel" role="menu">
+            ${options.map((o, i) => `<button class="dd-item" role="menuitemradio" aria-checked="${o.checked ? 'true' : 'false'}" data-i="${i}" style="--i:${i}">
+              <span class="dd-ic">${o.icon || ''}</span><span>${esc(o.label)}</span>${o.checked ? '<span class="dd-tick">✓</span>' : ''}
+            </button>`).join('')}
+          </div>
+        </div>`;
+    }
+
+    function bindDropdown(id, options) {
+      const root = document.getElementById(id);
+      if (!root) return;
+      const trigger = root.querySelector('.dd-trigger');
+      const items = [...root.querySelectorAll('.dd-item')];
+      trigger.addEventListener('click', e => {
+        e.stopPropagation();
+        const open = root.classList.contains('open');
+        document.querySelectorAll('.dd.open').forEach(closeDd);
+        if (!open) { root.classList.add('open'); trigger.setAttribute('aria-expanded', 'true'); }
+      });
+      root.querySelector('.dd-panel').addEventListener('click', e => {
+        const b = e.target.closest('.dd-item[data-i]');
+        if (!b) return;
+        closeDd(root);
+        options[+b.dataset.i]?.onClick?.();
+      });
+      root.addEventListener('keydown', e => {
+        if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+        e.preventDefault();
+        if (!root.classList.contains('open')) { root.classList.add('open'); trigger.setAttribute('aria-expanded', 'true'); }
+        const cur = items.indexOf(document.activeElement);
+        const next = e.key === 'ArrowDown' ? (cur + 1) % items.length : (cur <= 0 ? items.length - 1 : cur - 1);
+        items[next]?.focus();
+      });
+    }
+
+    /* cursor ink trails (masthead) */
+    let _ink = null;
+    function initInkTrails() {
+      _ink?.stop();
+      _ink = null;
+      const cv = document.getElementById('inkCanvas');
+      if (!cv || REDUCED || !FINE) return;
+      const ctx = cv.getContext('2d');
+      const CFG = { trails: 26, size: 36, friction: .5, dampening: .025, tension: .99, spring: .42 };
+      const pos = { x: innerWidth / 2, y: 190 };
+      let lines = [], raf = 0, phase = Math.random() * Math.PI * 2, visible = true, dead = false, io = null;
+
+      function size() {
+        const r = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
+        cv.width = Math.max(1, Math.round(r.width * d));
+        cv.height = Math.max(1, Math.round(r.height * d));
+        ctx.setTransform(d, 0, 0, d, 0, 0);
+      }
+      function build() {
+        lines = [];
+        for (let i = 0; i < CFG.trails; i++) {
+          lines.push({
+            spring: CFG.spring + (i / CFG.trails) * .025 + Math.random() * .1 - .05,
+            friction: CFG.friction + Math.random() * .01 - .005,
+            nodes: Array.from({ length: CFG.size }, () => ({ x: pos.x, y: pos.y, vx: 0, vy: 0 })),
+          });
+        }
+      }
+      function update(L) {
+        let e = L.spring, t = L.nodes[0];
+        t.vx += (pos.x - t.x) * e;
+        t.vy += (pos.y - t.y) * e;
+        for (let i = 0; i < L.nodes.length; i++) {
+          t = L.nodes[i];
+          if (i > 0) {
+            const n = L.nodes[i - 1];
+            t.vx += (n.x - t.x) * e; t.vy += (n.y - t.y) * e;
+            t.vx += n.vx * CFG.dampening; t.vy += n.vy * CFG.dampening;
+          }
+          t.vx *= L.friction; t.vy *= L.friction;
+          t.x += t.vx; t.y += t.vy;
+          e *= CFG.tension;
+        }
+      }
+      function draw(L) {
+        let x = L.nodes[0].x, y = L.nodes[0].y, a = 1, e, t;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        for (; a < L.nodes.length - 2; a++) {
+          e = L.nodes[a]; t = L.nodes[a + 1];
+          x = .5 * (e.x + t.x); y = .5 * (e.y + t.y);
+          ctx.quadraticCurveTo(e.x, e.y, x, y);
+        }
+        e = L.nodes[a]; t = L.nodes[a + 1];
+        ctx.quadraticCurveTo(e.x, e.y, t.x, t.y);
+        ctx.stroke();
+        ctx.closePath();
+      }
+      function frame() {
+        if (dead || !cv.isConnected) { stop(); return; }
+        raf = requestAnimationFrame(frame);
+        if (!visible) return;
+        phase += .0016;
+        const dark = curTheme() === 'dark';
+        const alpha = (dark ? .017 : .026) + Math.sin(phase) * .008;
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.clearRect(0, 0, cv.width, cv.height);
+        ctx.globalCompositeOperation = dark ? 'lighter' : 'source-over';
+        ctx.strokeStyle = dark ? `rgba(192,162,102,${alpha})` : `rgba(140,110,58,${alpha})`;
+        ctx.lineWidth = 8;
+        for (const L of lines) { update(L); draw(L); }
+      }
+      function onMove(ev) {
+        const r = cv.getBoundingClientRect();
+        pos.x = ev.clientX - r.left;
+        pos.y = ev.clientY - r.top;
+      }
+      function stop() {
+        dead = true;
+        cancelAnimationFrame(raf);
+        document.removeEventListener('mousemove', onMove);
+        removeEventListener('resize', size);
+        io?.disconnect();
+      }
+
+      size(); build();
+      document.addEventListener('mousemove', onMove);
+      addEventListener('resize', size);
+      io = new IntersectionObserver(es => { visible = es[0].isIntersecting; }, { threshold: 0 });
+      io.observe(cv);
+      raf = requestAnimationFrame(frame);
+      _ink = { stop };
+    }
+
+    /* sorting */
+    const SORTS = {
+      chrono:   { label: 'Chronological', icon: '✦', note: 'Most recent first',
+                  up: (a,b) => (a.start||'').localeCompare(b.start||''),
+                  past: (a,b) => (b.start||'').localeCompare(a.start||'') },
+      longest:  { label: 'Longest stay', icon: '☾', note: 'Longest first',
+                  cmp: (a,b) => (b.nights||0) - (a.nights||0) },
+      az:       { label: 'A–Z by title', icon: 'A', note: 'Alphabetical',
+                  cmp: (a,b) => a.title.localeCompare(b.title) },
+      dispatch: { label: 'Dispatch number', icon: '№', note: 'Highest number first',
+                  cmp: (a,b) => (b.number||0) - (a.number||0) },
+    };
+    function curSort() {
+      let s = null; try { s = localStorage.getItem('tp-sort'); } catch(e) {}
+      return SORTS[s] ? s : 'chrono';
+    }
+    function setSort(k, filter) {
+      try { localStorage.setItem('tp-sort', k); } catch(e) {}
+      renderHome(filter);
+    }
+
     /* cards */
     function cardHTML(t) {
       return `
@@ -828,13 +1033,19 @@
       const s = DATA.site || {};
       const q = filter.toLowerCase();
       const match = t => !q || (t.title + ' ' + (t.subtitle||'') + ' ' + (t.location||'') + ' ' + t.dates + ' ' + (t.memory||'')).toLowerCase().includes(q);
-      const upcoming = DATA.trips.filter(t => !t.past && match(t)).sort((a,b) => (a.start||'').localeCompare(b.start||''));
-      const past = DATA.trips.filter(t => t.past && match(t)).sort((a,b) => (b.start||'').localeCompare(a.start||''));
+      const sk = curSort(), S = SORTS[sk];
+      const upcoming = DATA.trips.filter(t => !t.past && match(t)).sort(S.up || S.cmp);
+      const past = DATA.trips.filter(t => t.past && match(t)).sort(S.past || S.cmp);
+      const sortOpts = Object.keys(SORTS).map(k => ({
+        label: SORTS[k].label, icon: SORTS[k].icon, checked: k === sk,
+        onClick: () => setSort(k, filter),
+      }));
       const up = nextTrip();
       const cd = up ? `<span class="countdown" title="Tap for your boarding pass" role="button" tabindex="0">Next departure: ${esc(up.t.title)} ${up.d === 0 ? 'today' : up.d === 1 ? 'tomorrow' : 'in ' + up.d + ' days'}</span>` : '';
 
       app.innerHTML = `
         <section class="masthead">
+          <canvas class="ink-canvas" id="inkCanvas" aria-hidden="true"></canvas>
           <div class="rule2"></div>
           <h1>${esc(s.title || 'The Itinerary')}</h1>
           <div class="eyebrow">✦ &nbsp;${esc(s.eyebrow || 'Dispatches from London')}&nbsp; ✦</div>
@@ -852,12 +1063,13 @@
             <label class="search"><span class="mag">✦</span>
               <input id="searchInput" placeholder="Search the record" value="${esc(filter)}" />
             </label>
+            ${dropdownHTML('sortDd', 'Sort · ' + S.label, sortOpts)}
           </div>
           <div class="sec-head reveal"><h2>Next Departures</h2><span class="count">${upcoming.length} planned</span></div>
           ${upcoming.length ? `<div class="grid">${upcoming.map(cardHTML).join('')}</div>` : `<div class="empty">Nothing on the horizon${q ? ' matching “' + esc(filter) + '”' : ''}.</div>`}
         </section>
         <section class="section" style="padding-top:0">
-          <div class="sec-head reveal"><h2>The Archive</h2><span class="count">${past.length} filed</span><span class="right">Most recent first</span></div>
+          <div class="sec-head reveal"><h2>The Archive</h2><span class="count">${past.length} filed</span><span class="right">${esc(S.note)}</span></div>
           ${past.length ? `<div class="grid">${past.map(cardHTML).join('')}</div>` : `<div class="empty">No dispatches filed${q ? ' matching “' + esc(filter) + '”' : ''}.</div>`}
         </section>
         ${buildAtlas()}`;
@@ -867,8 +1079,10 @@
       const si = document.getElementById('searchInput');
       si.oninput = e => { renderHome(e.target.value); };
       if (filter) { si.focus(); si.setSelectionRange(si.value.length, si.value.length); }
+      bindDropdown('sortDd', sortOpts);
       setupReveal();
       initHomeAnimations();
+      initInkTrails();
       attachTilt();
     }
 
